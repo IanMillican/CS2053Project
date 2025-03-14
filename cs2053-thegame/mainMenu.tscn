@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://b86huoo68j8uo"]
+
+[ext_resource type="Texture2D" uid="uid://5otix2cd403b" path="res://GodotImage.png" id="1_b6wls"]
+[ext_resource type="Texture2D" uid="uid://p7au4jtahldq" path="res://BlankSpace.png" id="2_knmtf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehfs8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Node" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1356.0
+offset_bottom = 644.0
+texture = ExtResource("1_b6wls")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_top = 644.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_knmtf")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 1356.0
+offset_right = 2184.0
+offset_bottom = 644.0
+texture = ExtResource("2_knmtf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1461.0
+offset_top = 231.0
+offset_right = 1925.0
+offset_bottom = 321.0
+theme_override_colors/font_color = Color(0.937255, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.937255, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.937255, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -544.0
+offset_top = -500.0
+offset_right = 545.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxFlat_ehfs8")
+text = "Start Game"
