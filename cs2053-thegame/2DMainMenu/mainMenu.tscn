@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b86huoo68j8uo"]
 
-[ext_resource type="Texture2D" uid="uid://5otix2cd403b" path="res://2DMainMenu/GodotImage.png" id="1_b6wls"]
-[ext_resource type="Texture2D" uid="uid://p7au4jtahldq" path="res://2DMainMenu/BlankSpace.png" id="2_knmtf"]
-[ext_resource type="Script" path="res://startGamebutton.gd" id="3_aln0p"]
+[ext_resource type="Texture2D" uid="uid://5otix2cd403b" path="res://2DMainMenu/GodotImage.png" id="1_c0ims"]
+[ext_resource type="Texture2D" uid="uid://p7au4jtahldq" path="res://2DMainMenu/BlankSpace.png" id="2_0twsn"]
+[ext_resource type="Script" path="res://2DMainMenu/startGamebutton.gd" id="3_3qgli"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehfs8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -12,19 +12,19 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1356.0
 offset_bottom = 644.0
-texture = ExtResource("1_b6wls")
+texture = ExtResource("1_c0ims")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_top = 644.0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("2_knmtf")
+texture = ExtResource("2_0twsn")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 offset_left = 1356.0
 offset_right = 2184.0
 offset_bottom = 644.0
-texture = ExtResource("2_knmtf")
+texture = ExtResource("2_0twsn")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 1461.0
@@ -51,6 +51,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 200
 theme_override_styles/normal = SubResource("StyleBoxFlat_ehfs8")
 text = "Start Game"
-script = ExtResource("3_aln0p")
+script = ExtResource("3_3qgli")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
