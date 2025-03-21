@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://diytui7cvgvar"]
+[gd_scene load_steps=6 format=3 uid="uid://diytui7cvgvar"]
 
 [ext_resource type="Script" path="res://creepRes/level_1_creeps.gd" id="1_pdtp0"]
-[ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/dodge_the_creeps_2d_assets/mob.tscn" id="2_na8p5"]
-[ext_resource type="PackedScene" uid="uid://vfi5x4625ddb" path="res://creepRes/dodge_the_creeps_2d_assets/player.tscn" id="2_wrmho"]
+[ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/mob.tscn" id="2_na8p5"]
+[ext_resource type="PackedScene" uid="uid://vfi5x4625ddb" path="res://creepRes/player.tscn" id="2_wrmho"]
+[ext_resource type="Script" path="res://creepRes/player.gd" id="4_a8d3c"]
 
 [sub_resource type="Curve2D" id="Curve2D_acj4l"]
 _data = {
@@ -15,6 +16,7 @@ script = ExtResource("1_pdtp0")
 mobScene = ExtResource("2_na8p5")
 
 [node name="player" parent="." instance=ExtResource("2_wrmho")]
+script = ExtResource("4_a8d3c")
 
 [node name="mobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -35,7 +37,6 @@ curve = SubResource("Curve2D_acj4l")
 [node name="spawnLocation" type="PathFollow2D" parent="mobPath"]
 position = Vector2(64, 72)
 
-[connection signal="hit" from="player" to="." method="gameOver"]
 [connection signal="timeout" from="mobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="startTimer" to="." method="_on_start_timer_timeout"]

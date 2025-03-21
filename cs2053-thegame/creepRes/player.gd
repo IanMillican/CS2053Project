@@ -1,6 +1,6 @@
 extends Area2D
 signal hit
-@export var speed = 300
+@export var speed = 350
 var screenSize
 
 
@@ -13,13 +13,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
-	elif Input.is_action_pressed("down"):
+	elif Input.is_action_pressed("ui_down"):
 		velocity.y += 1
-	elif Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 		
 	if velocity.length() > 0:

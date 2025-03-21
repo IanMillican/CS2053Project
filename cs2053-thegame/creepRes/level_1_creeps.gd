@@ -1,11 +1,12 @@
 extends Node
 @export var mobScene: PackedScene
 var score
-var screenSize
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	score = 0
+	$player.start($startPos.position)
+	$startTimer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,12 +20,13 @@ func _on_mob_timer_timeout() -> void:
 	var spawnLoc = $mobPath/spawnLocation
 	spawnLoc.progress_ratio = randf()
 	mob.position = spawnLoc.position
+	mob.look_at($player.position)
+	
 	#Rotate the mob
-	var direction = spawnLoc.rotation + PI/2
-	direction += randf_range(-PI / 4, PI / 4)
-	mob.rotation = direction
+	var direction = ($player.position - mob.position).normalized()
+	var speed = randf_range(150.0, 250.0)
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
+	mob.linear_velocity = direction * speed
 	#Add the mob to the scene
 	add_child(mob)
 
