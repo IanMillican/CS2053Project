@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://vfi5x4625ddb"]
+[gd_scene load_steps=8 format=3 uid="uid://vfi5x4625ddb"]
 
+[ext_resource type="Script" path="res://creepRes/player.gd" id="1_4yuxj"]
 [ext_resource type="Texture2D" uid="uid://chf4hjmevnvxj" path="res://creepRes/dodge_the_creeps_2d_assets/art/playerGrey_up1.png" id="1_s05cu"]
 [ext_resource type="Texture2D" uid="uid://okbwt7goypot" path="res://creepRes/dodge_the_creeps_2d_assets/art/playerGrey_up2.png" id="2_5mv1k"]
 [ext_resource type="Texture2D" uid="uid://cmlhefiv12s7n" path="res://creepRes/dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="3_lvxp8"]
@@ -35,6 +36,7 @@ radius = 27.0
 height = 68.0
 
 [node name="player" type="Area2D"]
+script = ExtResource("1_4yuxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

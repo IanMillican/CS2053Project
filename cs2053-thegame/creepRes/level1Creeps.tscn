@@ -1,9 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://diytui7cvgvar"]
+[gd_scene load_steps=3 format=3 uid="uid://diytui7cvgvar"]
 
-[ext_resource type="Script" path="res://creepRes/level_1_creeps.gd" id="1_pdtp0"]
-[ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/mob.tscn" id="2_na8p5"]
 [ext_resource type="PackedScene" uid="uid://vfi5x4625ddb" path="res://creepRes/player.tscn" id="2_wrmho"]
-[ext_resource type="Script" path="res://creepRes/player.gd" id="4_a8d3c"]
 
 [sub_resource type="Curve2D" id="Curve2D_acj4l"]
 _data = {
@@ -12,11 +9,8 @@ _data = {
 point_count = 5
 
 [node name="Node" type="Node"]
-script = ExtResource("1_pdtp0")
-mobScene = ExtResource("2_na8p5")
 
 [node name="player" parent="." instance=ExtResource("2_wrmho")]
-script = ExtResource("4_a8d3c")
 
 [node name="mobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -29,7 +23,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="startPos" type="Marker2D" parent="."]
-position = Vector2(240, 450)
+position = Vector2(960, 540)
 
 [node name="mobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_acj4l")

@@ -1,18 +1,18 @@
 extends Area2D
 signal hit
 @export var speed = 350
+@export var velocity = Vector2.ZERO
 var screenSize
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screenSize = get_viewport_rect().size
-	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 	elif Input.is_action_pressed("ui_down"):
