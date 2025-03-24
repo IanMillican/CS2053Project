@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://diytui7cvgvar"]
+[gd_scene load_steps=6 format=3 uid="uid://diytui7cvgvar"]
 
+[ext_resource type="Script" path="res://creepRes/level_1_creeps.gd" id="1_76vj0"]
+[ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/mob.tscn" id="2_7kasv"]
 [ext_resource type="PackedScene" uid="uid://vfi5x4625ddb" path="res://creepRes/player.tscn" id="2_wrmho"]
+[ext_resource type="PackedScene" uid="uid://s4mqixyedwfq" path="res://creepRes/Projectile.tscn" id="3_xlm3l"]
 
 [sub_resource type="Curve2D" id="Curve2D_acj4l"]
 _data = {
@@ -9,18 +12,22 @@ _data = {
 point_count = 5
 
 [node name="Node" type="Node"]
+script = ExtResource("1_76vj0")
+mobScene = ExtResource("2_7kasv")
+projectileScene = ExtResource("3_xlm3l")
 
 [node name="player" parent="." instance=ExtResource("2_wrmho")]
 
 [node name="mobTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="scoreTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="startTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
+autostart = true
 
 [node name="startPos" type="Marker2D" parent="."]
 position = Vector2(960, 540)
@@ -31,6 +38,22 @@ curve = SubResource("Curve2D_acj4l")
 [node name="spawnLocation" type="PathFollow2D" parent="mobPath"]
 position = Vector2(64, 72)
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LoseScreen" type="AcceptDialog" parent="Control"]
+title = "Boo! Do Better!"
+position = Vector2i(960, 540)
+size = Vector2i(231, 106)
+ok_button_text = "Try Again"
+dialog_text = "Maybe try not to get hit
+next time."
+
+[connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="mobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="timeout" from="startTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="canceled" from="Control/LoseScreen" to="." method="_on_lose_screen_canceled"]
+[connection signal="confirmed" from="Control/LoseScreen" to="." method="_on_lose_screen_confirmed"]

@@ -1,5 +1,6 @@
 extends RigidBody2D
 var screenSize
+@export var direction = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	var playerLoc = player.position
 	look_at(playerLoc)
 
-	var direction = (playerLoc - position).normalized()
+	direction = (playerLoc - position).normalized()
 	var speed = randf_range(100.0,200.0)
 	linear_velocity = direction * speed
 

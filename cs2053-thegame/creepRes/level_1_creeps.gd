@@ -52,3 +52,13 @@ func _on_score_timer_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	$mobTimer.start()
 	$scoreTimer.start()
+	
+func _on_player_hit() -> void:
+	$Control/LoseScreen.popup_centered()
+	get_tree().paused = true
+
+func _on_lose_screen_canceled() -> void:
+	get_tree().change_scene_to_file("res://2DMainMenu/mainMenu.tscn")
+
+func _on_lose_screen_confirmed() -> void:
+	get_tree().reload_current_scene()
