@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bicqibepmprw5"]
+
+[ext_resource type="PackedScene" uid="uid://dph3twbu1j04x" path="res://jetRes/Jet.glb" id="1_pv16p"]
+[ext_resource type="Script" path="res://jetRes/jet.gd" id="1_txdtk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wph6t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8lpi8"]
+
+[node name="Jet" type="CharacterBody3D"]
+script = ExtResource("1_txdtk")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="JetModel" parent="Pivot" instance=ExtResource("1_pv16p")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wph6t")
+
+[node name="Area3D" type="Area3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8lpi8")

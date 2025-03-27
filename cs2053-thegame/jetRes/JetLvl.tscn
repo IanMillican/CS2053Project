@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://clfrjeeup7mqp"]
+[gd_scene load_steps=11 format=3 uid="uid://clfrjeeup7mqp"]
+
+[ext_resource type="PackedScene" uid="uid://bicqibepmprw5" path="res://jetRes/jet.tscn" id="1_7pk40"]
+[ext_resource type="Texture2D" uid="uid://dsywub2w774w8" path="res://jetRes/skybox.png" id="2_pnk8t"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2qeig"]
+panorama = ExtResource("2_pnk8t")
+
+[sub_resource type="Sky" id="Sky_eqhiq"]
+sky_material = SubResource("PanoramaSkyMaterial_2qeig")
+
+[sub_resource type="Environment" id="Environment_wmgs2"]
+sky = SubResource("Sky_eqhiq")
+ambient_light_source = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y84jo"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ye6ac"]
+noise = SubResource("FastNoiseLite_y84jo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xqsd"]
+albedo_color = Color(0.156863, 0.305882, 1, 1)
+albedo_texture = SubResource("NoiseTexture2D_ye6ac")
+
+[sub_resource type="BoxMesh" id="BoxMesh_el3rj"]
+material = SubResource("StandardMaterial3D_5xqsd")
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ky1lw"]
+size = Vector3(500, 1, 500)
 
 [node name="JetLvl" type="Node3D"]
+
+[node name="Jet" parent="." instance=ExtResource("1_7pk40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.10108, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Jet"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.16089, -5.6069)
+environment = SubResource("Environment_wmgs2")
+
+[node name="Ground" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_el3rj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_ky1lw")
