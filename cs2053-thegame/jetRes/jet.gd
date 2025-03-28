@@ -6,6 +6,11 @@ var isRotatedRight = false
 var isRotatedUp = false
 var isRotatedDown = false
 
+signal collidedWall
+signal unCollidedWall
+var isCollidedWall = false
+var isCollidedGround = false
+
 func _ready() -> void:
 	pass
 	
@@ -17,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	vel.z += 1
 	
 	
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") and not isCollidedWall:
 		vel.x += 1
 		if not isRotatedLeft:
 			isRotatedLeft = true
@@ -27,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		isRotatedLeft = false
 		
 		
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") and not isCollidedWall:
 		vel.x -= 1
 		if not isRotatedRight:
 			isRotatedRight = true
@@ -37,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		isRotatedRight = false
 		
 		
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and not isCollidedGround:
 		vel.y += 1
 		if not isRotatedUp:
 			isRotatedUp = true
@@ -47,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		isRotatedUp = false
 		
 		
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and not isCollidedGround:
 		vel.y -= 1
 		if not isRotatedDown:
 			isRotatedDown = true
@@ -61,3 +66,26 @@ func _physics_process(delta: float) -> void:
 		vel= vel.normalized() * speed
 	velocity = vel
 	move_and_slide()
+
+
+func _on_collision_area_body_entered(body: Node3D) -> void:
+	if body.name != "Jet" and body.is_in_group("walls"):
+		print("Hit")
+		#collidedWall.emit()
+		isCollidedWall = true
+	if body.name != "Jet" and body.is_in_group("ground"):
+		print("Hit")
+		isCollidedGround = true
+
+func _on_collision_area_body_exited(body: Node3D) -> void:
+	if body.name != "Jet" and body.is_in_group("walls"):
+		#unCollidedWall.emit()
+		isCollidedWall = false
+	if body.name != "Jet" and body.is_in_group("ground"):
+		isCollidedGround = false
+#func _set_Collision_Wall() -> void:
+	#isCollidedWall = true
+	#print("Hi")
+	#
+#func _set_Uncollision_Wall() -> void:
+	#isCollidedWall = false
