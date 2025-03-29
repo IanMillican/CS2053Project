@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwn8fnxhiqn30"]
+[gd_scene load_steps=12 format=3 uid="uid://dwn8fnxhiqn30"]
 
 [ext_resource type="Script" path="res://creepRes/mob.gd" id="1_n8bkh"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="2_alu3y"]
 [ext_resource type="Texture2D" uid="uid://cqp8akdbmyrkm" path="res://creepRes/dodge_the_creeps_2d_assets/art/enemyFlyingAlt_1.png" id="2_k6c6w"]
 [ext_resource type="Texture2D" uid="uid://dkxvn4p8dho3y" path="res://creepRes/dodge_the_creeps_2d_assets/art/enemyFlyingAlt_2.png" id="3_o3ocu"]
 [ext_resource type="Texture2D" uid="uid://ddps41a0fmbu5" path="res://creepRes/dodge_the_creeps_2d_assets/art/enemySwimming_1.png" id="4_x4bmv"]
@@ -8,12 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://ij5glnwh4hs8" path="res://creepRes/dodge_the_creeps_2d_assets/art/enemyWalking_1.png" id="6_kxj2e"]
 [ext_resource type="Texture2D" uid="uid://syxmocg4vv1q" path="res://creepRes/dodge_the_creeps_2d_assets/art/enemyWalking_2.png" id="7_xgfft"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7q3mo"]
-radius = 37.0
-height = 100.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl2iu"]
+atlas = ExtResource("2_alu3y")
+region = Rect2(140, 60, 230, 330)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s6x2i"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl2iu")
+}],
+"loop": true,
+"name": &"Prof",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_k6c6w")
@@ -48,19 +57,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ed5w"]
+radius = 48.0
+height = 128.0
+
 [node name="mob" type="RigidBody2D"]
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_n8bkh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_7q3mo")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_s6x2i")
-animation = &"walk"
+animation = &"Prof"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4ed5w")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
