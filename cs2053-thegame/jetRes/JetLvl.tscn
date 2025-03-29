@@ -1,18 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://clfrjeeup7mqp"]
+[gd_scene load_steps=16 format=3 uid="uid://clfrjeeup7mqp"]
 
 [ext_resource type="PackedScene" uid="uid://bicqibepmprw5" path="res://jetRes/jet.tscn" id="1_7pk40"]
 [ext_resource type="Script" path="res://jetRes/jet_lvl.gd" id="1_bjplq"]
-[ext_resource type="Texture2D" uid="uid://dsywub2w774w8" path="res://jetRes/skybox.png" id="2_pnk8t"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2qeig"]
-panorama = ExtResource("2_pnk8t")
-
-[sub_resource type="Sky" id="Sky_eqhiq"]
-sky_material = SubResource("PanoramaSkyMaterial_2qeig")
-
-[sub_resource type="Environment" id="Environment_wmgs2"]
-sky = SubResource("Sky_eqhiq")
-ambient_light_source = 3
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y84jo"]
 noise_type = 2
@@ -32,22 +21,28 @@ size = Vector3(500, 1, 500)
 size = Vector3(500, 1, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ufq2q"]
-size = Vector3(1, 50, 100)
+size = Vector3(1, 50, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fos72"]
-size = Vector3(1, 50, 100)
+size = Vector3(1, 50, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vq062"]
-size = Vector3(1, 50, 100)
+size = Vector3(1, 50, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ds8de"]
-size = Vector3(1, 50, 100)
+size = Vector3(1, 50, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vupek"]
-size = Vector3(100, 1, 100)
+size = Vector3(100, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2s65"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2t7l"]
+size = Vector3(1, 50, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkolf"]
+size = Vector3(1, 50, 100)
 
 [node name="JetLvl" type="Node3D"]
 script = ExtResource("1_bjplq")
@@ -57,7 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.0368, -25)
 
 [node name="Camera3D" type="Camera3D" parent="Jet"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.16089, -5.6069)
-environment = SubResource("Environment_wmgs2")
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["ground"]]
 
@@ -103,3 +97,16 @@ mesh = SubResource("BoxMesh_vupek")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/Ceiling1"]
 shape = SubResource("BoxShape3D_y2s65")
+
+[node name="BackWall" type="Node3D" parent="."]
+
+[node name="Wall1" type="StaticBody3D" parent="BackWall" groups=["walls"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5.434, -50)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BackWall/Wall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+mesh = SubResource("BoxMesh_y2t7l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall/Wall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+shape = SubResource("BoxShape3D_bkolf")

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var speed = 10
+var speed = 20
 var isRotatedLeft = false
 var isRotatedRight = false
 var isRotatedUp = false
@@ -15,7 +15,8 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	pass
+	#$OmniLight3D.look_at(velocity.normalized().rotated(Vector3(0, 1, 0), -180))
+	$OmniLight3D.position = ($OmniLight3D.position + position) * delta
 	
 func _physics_process(delta: float) -> void:
 	var vel = Vector3.ZERO
