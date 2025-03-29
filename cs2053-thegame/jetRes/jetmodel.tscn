@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxn2t26pb5gyk"]
+
+[ext_resource type="PackedScene" uid="uid://dph3twbu1j04x" path="res://jetRes/Jet.glb" id="1_pralb"]
+
+[node name="Root Scene" instance=ExtResource("1_pralb")]
