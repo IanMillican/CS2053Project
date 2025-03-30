@@ -11,7 +11,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		projectile_instance = ProjectileScene.instantiate()
 		get_tree().current_scene.add_child(projectile_instance)
-		projectile_instance.add_to_group("projectile")
 		jet_position = $Jet.position
 		jet_direction = $Jet.rotation
 
@@ -26,10 +25,3 @@ func _process(delta: float) -> void:
 func _on_jet_shoot_projectile() -> void:
 	if projectile_instance != null:
 		projectile_instance.set_movement(jet_position, jet_direction)
-
-
-func _on_ian_test_area_entered(area: Area3D) -> void:
-	if area.is_in_group("projectile"):
-		print("projectile")
-	else:
-		print("jet")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bogignha6ra2e"]
+
+[ext_resource type="Script" path="res://jetRes/ian_mob.gd" id="1_1b8jg"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="1_ojxmy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfbki"]
+albedo_texture = ExtResource("1_ojxmy")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_so4bj"]
+material = SubResource("StandardMaterial3D_sfbki")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86h3v"]
+size = Vector3(2, 0.1, 2)
+
+[node name="IanMob" type="Area3D"]
+transform = Transform3D(-2, -1.74846e-07, 7.64274e-15, 0, -8.74228e-08, -2, 1.74846e-07, -2, 8.74228e-08, 0, 0, 0)
+script = ExtResource("1_1b8jg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_so4bj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_86h3v")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
