@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://clfrjeeup7mqp"]
+[gd_scene load_steps=20 format=3 uid="uid://clfrjeeup7mqp"]
 
 [ext_resource type="PackedScene" uid="uid://bicqibepmprw5" path="res://jetRes/jet.tscn" id="1_7pk40"]
 [ext_resource type="Script" path="res://jetRes/jet_lvl.gd" id="1_bjplq"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="3_0m0qx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y84jo"]
 noise_type = 2
@@ -44,10 +45,19 @@ size = Vector3(1, 50, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkolf"]
 size = Vector3(1, 50, 100)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_6bwvm"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocmw2"]
+albedo_texture = ExtResource("3_0m0qx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvte7"]
+size = Vector3(10, 1, 10)
+
 [node name="JetLvl" type="Node3D"]
 script = ExtResource("1_bjplq")
 
-[node name="Jet" parent="." instance=ExtResource("1_7pk40")]
+[node name="Jet" parent="." groups=["jet"] instance=ExtResource("1_7pk40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.0368, -25)
 
 [node name="Camera3D" type="Camera3D" parent="Jet"]
@@ -110,3 +120,16 @@ mesh = SubResource("BoxMesh_y2t7l")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall/Wall1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 shape = SubResource("BoxShape3D_bkolf")
+
+[node name="IanTest" type="Area3D" parent="."]
+transform = Transform3D(-0.999999, -5.34044e-11, 0.00122175, -0.00122175, 4.37114e-08, -0.999999, 0, -1, -4.37114e-08, -2.84837, 28.099, 52.9942)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IanTest"]
+mesh = SubResource("PlaneMesh_6bwvm")
+surface_material_override/0 = SubResource("StandardMaterial3D_ocmw2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IanTest"]
+shape = SubResource("BoxShape3D_fvte7")
+
+[connection signal="shootProjectile" from="Jet" to="." method="_on_jet_shoot_projectile"]
+[connection signal="area_entered" from="IanTest" to="." method="_on_ian_test_area_entered"]
