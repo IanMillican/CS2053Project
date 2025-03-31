@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://28h24l1buvpo"]
+
+[ext_resource type="PackedScene" uid="uid://voy6anwyybqu" path="res://MarioLevel3D/mario assets/Player1.tscn" id="2_5wd3j"]
+
+[sub_resource type="GDScript" id="GDScript_g3tk2"]
+resource_name = "PlayerMovement"
+script/source = "extends CharacterBody3D
+
+@export var speed = 5
+@export var jump_velocity = 5
+@export var gravity = 9.8
+@export var mouse_sensitivity = 0.02
+
+@onready var camera = get_tree().get_first_node_in_group(\"player_camera\")
+
+var rotation_angle = 0.0
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Capture mouse input
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		rotation_angle -= event.relative.x * mouse_sensitivity
+		rotation_angle = wrapf(rotation_angle, -PI * 2, PI * 2) # Wrap the angle
+		rotation.y = rotation_angle #Apply rotation to the CharacterBody.
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"JUMP\") and is_on_floor():
+		velocity.y = jump_velocity
+
+	var direction = Vector3.ZERO
+	
+	if Input.is_action_pressed(\"UP\"):
+		direction.z -= 1.0
+		$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Sprint\")
+		if Input.is_action_pressed(\"RIGHT\"):
+			direction.x -= 1.0
+		elif Input.is_action_pressed(\"LEFT\"):
+			direction.x += 1.0
+		if Input.is_action_pressed(\"JUMP\") or not is_on_floor():
+			$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Jump\") 
+	elif Input.is_action_pressed(\"DOWN\"):
+		direction.z += 1.0
+		$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Sprint\")
+		if Input.is_action_pressed(\"RIGHT\"):
+			direction.x -= 1.0
+		elif Input.is_action_pressed(\"LEFT\"):
+			direction.x += 1.0
+		if Input.is_action_pressed(\"JUMP\") or not is_on_floor():
+			$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Jump\")
+		
+	elif Input.is_action_pressed(\"RIGHT\"):
+		direction.x -= 1.0
+		$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Sprint\")
+		
+	elif Input.is_action_pressed(\"LEFT\"):
+		direction.x += 1.0
+		$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Sprint\")
+	elif Input.is_action_pressed(\"JUMP\") or not is_on_floor():
+		$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Jump\")
+	else:
+		$AnimationLibrary_Godot_Standard/AnimationPlayer.play(\"Idle\")
+
+	direction.normalized() # Normalize input to handle diagonal movement
+
+	var forward_direction = -transform.basis.z # Forward direction of character
+	var right_direction = transform.basis.x # Right direction of character
+
+	var move_direction = forward_direction * direction.z + right_direction * direction.x
+
+	if move_direction:
+		velocity.x = move_direction.x * speed
+		velocity.z = move_direction.z * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+
+	move_and_slide()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pom7r"]
+size = Vector3(1, 1.75928, 0.656593)
+
+[node name="Player" type="CharacterBody3D"]
+script = SubResource("GDScript_g3tk2")
+
+[node name="AnimationLibrary_Godot_Standard" parent="." instance=ExtResource("2_5wd3j")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.904053, -0.0160255)
+shape = SubResource("BoxShape3D_pom7r")

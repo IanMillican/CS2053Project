@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bku10u1ettb3t"]
+
+[ext_resource type="Texture2D" uid="uid://dnlvqwlvina8q" path="res://MarioLevel3D/mario assets/MarioBrick.png" id="1_fel3i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8k6u"]
+size = Vector3(15, 2, 75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7wj0"]
+albedo_texture = ExtResource("1_fel3i")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_be7mw"]
+albedo_texture = ExtResource("1_fel3i")
+uv1_triplanar = true
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+use_collision = true
+mesh = SubResource("BoxMesh_g8k6u")
+material = SubResource("StandardMaterial3D_j7wj0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16092, 0)
+operation = 2
+use_collision = true
+size = Vector3(13, 3, 73)
+material = SubResource("StandardMaterial3D_be7mw")
