@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://t6smcgkoes3n"]
 
-[ext_resource type="Shader" path="res://pacManRes/ghost.gdshader" id="1_8eq58"]
+[ext_resource type="Shader" path="res://pacManRes/prof.gdshader" id="1_3cfs7"]
 [ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="2_qfye3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c73bc"]
-shader = ExtResource("1_8eq58")
-shader_parameter/capsule_radius = 54.0
-shader_parameter/capsule_height = 160.0
-shader_parameter/capsule_offset = Vector2(0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1h32"]
+shader = ExtResource("1_3cfs7")
+shader_parameter/capsule_radius = 108.0
+shader_parameter/capsule_height = 320.0
+shader_parameter/capsule_offset = Vector2(0, -91)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s7ooy"]
 animations = [{
@@ -27,7 +27,7 @@ height = 160.0
 [node name="Area2D" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_c73bc")
+material = SubResource("ShaderMaterial_v1h32")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_s7ooy")
 animation = &"prof"

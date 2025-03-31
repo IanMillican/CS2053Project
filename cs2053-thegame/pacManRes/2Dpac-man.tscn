@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://pacManRes/2dPacMan.gd" id="1_1b34o"]
 [ext_resource type="Texture2D" uid="uid://coorxmwgsgicg" path="res://pacManRes/Tileset.png" id="1_rpgbk"]
-[ext_resource type="PackedScene" uid="uid://t6smcgkoes3n" path="res://ghost.tscn" id="3_puxlv"]
+[ext_resource type="PackedScene" uid="uid://t6smcgkoes3n" path="res://pacManRes/ghost.tscn" id="3_puxlv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bfye"]
 texture = ExtResource("1_rpgbk")
