@@ -28,6 +28,7 @@ func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("projectiles"):
 		print("hit")
 		area.queue_free()
+		$LaserHit.play()
 		health -= 1
 
 

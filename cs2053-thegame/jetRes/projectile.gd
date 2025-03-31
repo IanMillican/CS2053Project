@@ -13,3 +13,9 @@ func _physics_process(delta: float) -> void:
 func set_movement(positionIn: Vector3, directionIn: Vector3) -> void:
 	position = positionIn
 	rotation = directionIn
+
+
+func _on_body_entered(body: Node3D) -> void:
+	print(body.name)
+	if not (body.is_in_group("jet")):
+		queue_free()

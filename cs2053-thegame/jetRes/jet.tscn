@@ -13,7 +13,7 @@ size = Vector3(0.557373, 1.27119, 0.35788)
 size = Vector3(0.947693, 3.55537, 0.129135)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bcw86"]
-size = Vector3(0.891415, 0.683704, 1.33878)
+size = Vector3(0.891415, 0.683704, 0.741922)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hi8na"]
 size = Vector3(0.57051, 1.88164, 0.0558362)
@@ -85,8 +85,7 @@ visible = false
 shape = SubResource("BoxShape3D_v7ci5")
 
 [node name="TailCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.0179684, 0.356249, -2.26193)
-visible = false
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.0179684, 0.0578198, -2.26193)
 shape = SubResource("BoxShape3D_bcw86")
 
 [node name="TailWingCollision" type="CollisionShape3D" parent="."]
@@ -113,7 +112,7 @@ shape = SubResource("BoxShape3D_7crbh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.988398, 2.63452)
 light_energy = 10.025
 light_size = 0.394
-omni_range = 50.0
+omni_range = 125.992
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
 [connection signal="body_exited" from="CollisionArea" to="." method="_on_collision_area_body_exited"]

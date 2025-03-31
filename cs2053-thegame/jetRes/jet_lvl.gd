@@ -10,11 +10,12 @@ var shoot_cooldown = 0.5
 
 func _ready() -> void:
 	#ProjectileScene.set_meta("projectile", true)
-	pass
+	$Jet/GameMusic.play()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		print("Shot")
+		$Jet/ShootSound.play()
 		projectile_instance = ProjectileScene.instantiate()
 		get_tree().current_scene.add_child(projectile_instance)
 		jet_position = $Jet.position
@@ -61,3 +62,8 @@ func _on_ian_mob_hit_jet() -> void:
 func _on_ian_mob_hit_goal() -> void:
 	print("Hit goal")
 	grade_score += 10
+
+
+func _on_goal_zone_body_entered(body: Node3D) -> void:
+	if body.is_in_group("jet"):
+		get_tree().quit()

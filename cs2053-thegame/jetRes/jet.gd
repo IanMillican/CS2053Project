@@ -64,7 +64,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_down"):
 		transform = transform.rotated_local(Vector3.LEFT, -25)
 		isRotatedDown = false
-		
+	if not Input.is_anything_pressed():
+		rotation = Vector3(0, 0, 0)
 	
 	if vel != Vector3.ZERO:
 		vel= vel.normalized() * speed
