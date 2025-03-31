@@ -1,6 +1,6 @@
 extends Area3D
 
-var speed  = 50.0
+var speed  = 75.0
 
 func _ready():
 	add_to_group("projectiles")

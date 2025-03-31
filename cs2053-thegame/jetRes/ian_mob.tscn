@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bogignha6ra2e"]
+[gd_scene load_steps=7 format=3 uid="uid://bogignha6ra2e"]
 
 [ext_resource type="Script" path="res://jetRes/ian_mob.gd" id="1_1b8jg"]
 [ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="1_ojxmy"]
+[ext_resource type="PackedScene" uid="uid://c4qhvgp6tgqgu" path="res://jetRes/obstacle.tscn" id="3_nkdbd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfbki"]
 albedo_texture = ExtResource("1_ojxmy")
@@ -10,16 +11,23 @@ albedo_texture = ExtResource("1_ojxmy")
 material = SubResource("StandardMaterial3D_sfbki")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86h3v"]
-size = Vector3(2, 0.1, 2)
+size = Vector3(2, 0.290112, 2)
 
-[node name="IanMob" type="Area3D"]
-transform = Transform3D(-2, -1.74846e-07, 7.64274e-15, 0, -8.74228e-08, -2, 1.74846e-07, -2, 8.74228e-08, 0, 0, 0)
+[node name="IanMob" type="Node3D"]
 script = ExtResource("1_1b8jg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="IanMobArea" type="Area3D" parent="."]
+transform = Transform3D(-2, -1.74846e-07, 7.64274e-15, 0, -8.74228e-08, -2, 1.74846e-07, -2, 8.74228e-08, 0, 0.327036, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IanMobArea"]
 mesh = SubResource("PlaneMesh_so4bj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IanMobArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0950562, 0)
 shape = SubResource("BoxShape3D_86h3v")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="Obstacle" parent="." instance=ExtResource("3_nkdbd")]
+
+[connection signal="area_entered" from="IanMobArea" to="." method="_on_area_entered"]
+[connection signal="body_entered" from="IanMobArea" to="." method="_on_body_entered"]
+[connection signal="hitGoal" from="Obstacle" to="." method="_on_obstacle_hit_goal"]

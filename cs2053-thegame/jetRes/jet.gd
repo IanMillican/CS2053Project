@@ -18,8 +18,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#$OmniLight3D.look_at(velocity.normalized().rotated(Vector3(0, 1, 0), -180))
 	$OmniLight3D.position = ($OmniLight3D.position + position) * delta
-	if Input.is_action_just_pressed("shoot"):
-		shootProjectile.emit()
+	#if Input.is_action_just_pressed("shoot"):
+		#shootProjectile.emit()
 	
 func _physics_process(delta: float) -> void:
 	var vel = Vector3.ZERO

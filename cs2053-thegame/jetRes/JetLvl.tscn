@@ -1,8 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://clfrjeeup7mqp"]
+[gd_scene load_steps=24 format=3 uid="uid://clfrjeeup7mqp"]
 
 [ext_resource type="PackedScene" uid="uid://bicqibepmprw5" path="res://jetRes/jet.tscn" id="1_7pk40"]
 [ext_resource type="Script" path="res://jetRes/jet_lvl.gd" id="1_bjplq"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="3_0m0qx"]
+[ext_resource type="Script" path="res://jetRes/ians.gd" id="3_1ocu7"]
 [ext_resource type="PackedScene" uid="uid://bogignha6ra2e" path="res://jetRes/ian_mob.tscn" id="3_j21d8"]
+[ext_resource type="PackedScene" uid="uid://cfliitpkvov0w" path="res://jetRes/projectile.tscn" id="4_viloa"]
+[ext_resource type="Script" path="res://jetRes/big_ian.gd" id="6_u66xp"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y84jo"]
 noise_type = 2
@@ -45,14 +49,28 @@ size = Vector3(1, 50, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkolf"]
 size = Vector3(1, 50, 100)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_276qg"]
+albedo_texture = ExtResource("3_0m0qx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_djec4"]
+material = SubResource("StandardMaterial3D_276qg")
+size = Vector2(50, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qskh"]
+size = Vector3(50, 25, 1)
+
 [node name="JetLvl" type="Node3D"]
 script = ExtResource("1_bjplq")
 
 [node name="Jet" parent="." groups=["jet"] instance=ExtResource("1_7pk40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.0368, -25)
 
-[node name="Camera3D" type="Camera3D" parent="Jet"]
+[node name="FrontCamera" type="Camera3D" parent="Jet"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.16089, -5.6069)
+current = true
+
+[node name="BackCamera" type="Camera3D" parent="Jet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16089, 6.82294)
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["ground"]]
 
@@ -112,7 +130,44 @@ mesh = SubResource("BoxMesh_y2t7l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 shape = SubResource("BoxShape3D_bkolf")
 
-[node name="IanMob" parent="." instance=ExtResource("3_j21d8")]
-transform = Transform3D(-2, -1.74846e-07, 7.64274e-15, 0, -8.74228e-08, -2, 1.74846e-07, -2, 8.74228e-08, 0, 25.8803, 22.3331)
+[node name="Ians" type="Node3D" parent="."]
+script = ExtResource("3_1ocu7")
+
+[node name="IanMob" parent="Ians" instance=ExtResource("3_j21d8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 19.783, 54.912)
+
+[node name="IanMob2" parent="Ians" instance=ExtResource("3_j21d8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 23.1995, 22.8999, 130.883)
+
+[node name="Projectile" parent="." groups=["projectiles"] instance=ExtResource("4_viloa")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -35.6398, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 245.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 40
+text = "Current Grade (%): 0%"
+
+[node name="BigIan" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.5245, -47.0856)
+script = ExtResource("6_u66xp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BigIan"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_djec4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BigIan"]
+shape = SubResource("BoxShape3D_2qskh")
 
 [connection signal="shootProjectile" from="Jet" to="." method="_on_jet_shoot_projectile"]
+[connection signal="hitGoal" from="Ians/IanMob" to="." method="_on_ian_mob_hit_goal"]
+[connection signal="hitJet" from="Ians/IanMob" to="." method="_on_ian_mob_hit_jet"]
+[connection signal="hitGoal" from="Ians/IanMob2" to="." method="_on_ian_mob_hit_goal"]
+[connection signal="hitJet" from="Ians/IanMob2" to="." method="_on_ian_mob_hit_jet"]
