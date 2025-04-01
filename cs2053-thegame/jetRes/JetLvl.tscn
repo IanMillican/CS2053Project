@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://clfrjeeup7mqp"]
+[gd_scene load_steps=50 format=3 uid="uid://clfrjeeup7mqp"]
 
 [ext_resource type="PackedScene" uid="uid://bicqibepmprw5" path="res://jetRes/jet.tscn" id="1_7pk40"]
 [ext_resource type="Script" path="res://jetRes/jet_lvl.gd" id="1_bjplq"]
@@ -15,25 +15,25 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sglao"]
 albedo_texture = ExtResource("3_jkkgn")
 metallic = 0.53
-uv1_scale = Vector3(5, 5, 5)
+uv1_scale = Vector3(2.5, 2.5, 2.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_el3rj"]
 material = SubResource("StandardMaterial3D_sglao")
-size = Vector3(500, 1, 500)
+size = Vector3(100, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ky1lw"]
 size = Vector3(500, 1, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y8t2g"]
 material = SubResource("StandardMaterial3D_sglao")
-size = Vector3(500, 1, 500)
+size = Vector3(100, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_058xt"]
 size = Vector3(500, 1, 500)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7p70o"]
 material = SubResource("StandardMaterial3D_sglao")
-size = Vector3(500, 1, 500)
+size = Vector3(100, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ybejd"]
 size = Vector3(500, 1, 500)
@@ -90,13 +90,24 @@ size = Vector3(1, 50, 500)
 [sub_resource type="BoxShape3D" id="BoxShape3D_t7p2a"]
 size = Vector3(1, 50, 500)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02wbs"]
+albedo_texture = ExtResource("3_jkkgn")
+uv1_scale = Vector3(2.5, 2.5, 2.5)
+
 [sub_resource type="BoxMesh" id="BoxMesh_vupek"]
+lightmap_size_hint = Vector2i(3004, 2516)
+material = SubResource("StandardMaterial3D_02wbs")
 size = Vector3(100, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2s65"]
 size = Vector3(100, 1, 500)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5312d"]
+albedo_texture = ExtResource("3_jkkgn")
+uv1_scale = Vector3(2.5, 2.5, 2.5)
+
 [sub_resource type="BoxMesh" id="BoxMesh_5736a"]
+material = SubResource("StandardMaterial3D_5312d")
 size = Vector3(100, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxrn2"]
@@ -123,7 +134,7 @@ albedo_texture = ExtResource("3_0m0qx")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_djec4"]
 material = SubResource("StandardMaterial3D_276qg")
-size = Vector2(50, 25)
+size = Vector2(100, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2qskh"]
 size = Vector3(50, 25, 1)
@@ -136,12 +147,18 @@ ambient_light_energy = 0.0
 transparency = 1
 blend_mode = 1
 albedo_color = Color(0.00392157, 1, 0, 1)
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 12.77
+emission_operator = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_s0j5t"]
 material = SubResource("StandardMaterial3D_23ot8")
 size = Vector3(100, 50, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fjpul"]
+size = Vector3(100, 50, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6o1v"]
 size = Vector3(100, 50, 5)
 
 [node name="JetLvl" type="Node3D"]
@@ -303,7 +320,7 @@ shape = SubResource("BoxShape3D_4m8w7")
 [node name="Ians" type="Node3D" parent="."]
 script = ExtResource("3_1ocu7")
 
-[node name="IanMob" parent="Ians" instance=ExtResource("3_j21d8")]
+[node name="IanMob1" parent="Ians" instance=ExtResource("3_j21d8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 19.783, -85.5084)
 
 [node name="IanMob2" parent="Ians" instance=ExtResource("3_j21d8")]
@@ -350,15 +367,16 @@ theme_override_font_sizes/font_size = 40
 text = "Current Grade (%): 0%"
 
 [node name="BigIan" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.5245, -228.39)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 23.5245, -223.466)
 script = ExtResource("6_u66xp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BigIan"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_djec4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BigIan"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("BoxShape3D_2qskh")
+disabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mr3xa")
@@ -372,9 +390,71 @@ mesh = SubResource("BoxMesh_s0j5t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalZone"]
 shape = SubResource("BoxShape3D_fjpul")
 
+[node name="OutOfBounds" type="Node3D" parent="."]
+
+[node name="Barrier" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -77.621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier2" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 24.8185)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier2"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier3" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 115.029)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier3"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier4" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 194.339)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier4"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier5" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 286.023)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier5"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier6" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 363.592)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier6"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier7" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 457.892)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier7"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier8" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 547.074)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier8"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier9" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 645.961)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier9"]
+shape = SubResource("BoxShape3D_u6o1v")
+
+[node name="Barrier10" type="Area3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 742.311)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBounds/Barrier10"]
+shape = SubResource("BoxShape3D_u6o1v")
+
 [connection signal="shootProjectile" from="Jet" to="." method="_on_jet_shoot_projectile"]
-[connection signal="hitGoal" from="Ians/IanMob" to="." method="_on_ian_mob_hit_goal"]
-[connection signal="hitJet" from="Ians/IanMob" to="." method="_on_ian_mob_hit_jet"]
+[connection signal="hitGoal" from="Ians/IanMob1" to="." method="_on_ian_mob_hit_goal"]
+[connection signal="hitJet" from="Ians/IanMob1" to="." method="_on_ian_mob_hit_jet"]
 [connection signal="hitGoal" from="Ians/IanMob2" to="." method="_on_ian_mob_hit_goal"]
 [connection signal="hitJet" from="Ians/IanMob2" to="." method="_on_ian_mob_hit_jet"]
 [connection signal="hitGoal" from="Ians/IanMob3" to="." method="_on_ian_mob_hit_goal"]
@@ -393,4 +473,15 @@ shape = SubResource("BoxShape3D_fjpul")
 [connection signal="hitJet" from="Ians/IanMob9" to="." method="_on_ian_mob_hit_jet"]
 [connection signal="hitGoal" from="Ians/IanMob10" to="." method="_on_ian_mob_hit_goal"]
 [connection signal="hitJet" from="Ians/IanMob10" to="." method="_on_ian_mob_hit_jet"]
+[connection signal="body_entered" from="BigIan" to="." method="_on_big_ian_body_entered"]
 [connection signal="body_entered" from="GoalZone" to="." method="_on_goal_zone_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier2" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier3" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier4" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier5" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier6" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier7" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier8" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier9" to="." method="_on_barrier_body_entered"]
+[connection signal="body_entered" from="OutOfBounds/Barrier10" to="." method="_on_barrier_body_entered"]

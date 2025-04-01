@@ -2,7 +2,7 @@ extends Node3D
 
 var health = 3
 
-signal hitJet
+signal hitJet(name)
 signal hitGoal
 
 func _process(delta: float) -> void:
@@ -40,4 +40,4 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_obstacle_hit_goal() -> void:
-	hitGoal.emit()
+	hitGoal.emit(name)
