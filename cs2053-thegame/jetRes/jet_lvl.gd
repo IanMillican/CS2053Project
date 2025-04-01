@@ -55,14 +55,33 @@ func _on_jet_shoot_projectile() -> void:
 		projectile_instance.set_movement(jet_position, jet_direction)
 
 
-func _on_ian_mob_hit_jet() -> void:
+func _on_ian_mob_hit_jet(ianName: String) -> void:
 	print("Hit Ian")
 	grade_score -= 5
+	_remove_out_of_bounds(ianName)
 
 
 func _on_ian_mob_hit_goal(ianName: String) -> void:
 	print("Hit goal")
 	grade_score += 10
+	_remove_out_of_bounds(ianName)
+
+
+func _on_goal_zone_body_entered(body: Node3D) -> void:
+	if body.is_in_group("jet"):
+		get_tree().quit()
+
+
+func _on_big_ian_body_entered(body: Node3D) -> void:
+	if body.is_in_group("jet"):
+		get_tree().quit()
+
+
+func _on_barrier_body_entered(body: Node3D) -> void:
+	if body.is_in_group("jet"):
+		grade_score -= 5
+		
+func _remove_out_of_bounds(ianName: String):
 	if ianName == "IanMob1":
 		$OutOfBounds/Barrier.queue_free()
 	if ianName == "IanMob2":
@@ -83,18 +102,3 @@ func _on_ian_mob_hit_goal(ianName: String) -> void:
 		$OutOfBounds/Barrier9.queue_free()
 	if ianName == "IanMob10":
 		$OutOfBounds/Barrier10.queue_free()
-
-
-func _on_goal_zone_body_entered(body: Node3D) -> void:
-	if body.is_in_group("jet"):
-		get_tree().quit()
-
-
-func _on_big_ian_body_entered(body: Node3D) -> void:
-	if body.is_in_group("jet"):
-		get_tree().quit()
-
-
-func _on_barrier_body_entered(body: Node3D) -> void:
-	if body.is_in_group("jet"):
-		grade_score -= 5

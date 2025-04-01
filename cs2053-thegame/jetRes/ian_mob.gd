@@ -36,7 +36,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jet"):
 		if $Obstacle/Area3D:
 			$Obstacle/Area3D.queue_free()
-			hitJet.emit()
+			hitJet.emit(name)
 
 
 func _on_obstacle_hit_goal() -> void:
