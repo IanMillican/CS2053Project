@@ -6,6 +6,13 @@ var isRotatedRight = false
 var isRotatedUp = false
 var isRotatedDown = false
 
+var target_roll: float = 0.0
+var target_pitch: float = 0.0
+
+# How quickly the jet rotates towards the target angles.
+var roll_interp_speed: float = 5.0
+var pitch_interp_speed: float = 5.0
+
 signal collidedWall
 signal unCollidedWall
 var isCollidedWall = false
@@ -28,44 +35,49 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_left") and not isCollidedWall:
 		vel.x += 1
-		if not isRotatedLeft:
-			isRotatedLeft = true
-			transform = transform.rotated_local(Vector3.FORWARD, -25)
-	if Input.is_action_just_released("ui_left"):
-		transform = transform.rotated_local(Vector3.FORWARD, 25)
-		isRotatedLeft = false
-		
-		
-	if Input.is_action_pressed("ui_right") and not isCollidedWall:
+		target_roll = deg_to_rad(-10)
+		#if not isRotatedLeft:
+			#isRotatedLeft = true
+			#transform = transform.rotated_local(Vector3.FORWARD, -25)
+	#if Input.is_action_just_released("ui_left"):
+		#transform = transform.rotated_local(Vector3.FORWARD, 25)
+		#isRotatedLeft = false
+	elif Input.is_action_pressed("ui_right") and not isCollidedWall:
 		vel.x -= 1
-		if not isRotatedRight:
-			isRotatedRight = true
-			transform = transform.rotated_local(Vector3.FORWARD, 25)
-	if Input.is_action_just_released("ui_right"):
-		transform = transform.rotated_local(Vector3.FORWARD, -25)
-		isRotatedRight = false
+		target_roll = deg_to_rad(10)
+		#if not isRotatedRight:
+			#isRotatedRight = true
+			#transform = transform.rotated_local(Vector3.FORWARD, 25)
+	#if Input.is_action_just_released("ui_right"):
+		#transform = transform.rotated_local(Vector3.FORWARD, -25)
+		#isRotatedRight = false
+	else:
+		target_roll = 0
 		
 		
 	if Input.is_action_pressed("ui_up") and not isCollidedGround:
 		vel.y += 1
-		if not isRotatedUp:
-			isRotatedUp = true
-			transform = transform.rotated_local(Vector3.RIGHT, 25)
-	if Input.is_action_just_released("ui_up"):
-		transform = transform.rotated_local(Vector3.RIGHT, -25)
-		isRotatedUp = false
-		
-		
-	if Input.is_action_pressed("ui_down") and not isCollidedGround:
+		target_pitch = deg_to_rad(-10)
+		#if not isRotatedUp:
+			#isRotatedUp = true
+			#transform = transform.rotated_local(Vector3.RIGHT, 25)
+	#if Input.is_action_just_released("ui_up"):
+		#transform = transform.rotated_local(Vector3.RIGHT, -25)
+		#isRotatedUp = false
+	elif Input.is_action_pressed("ui_down") and not isCollidedGround:
 		vel.y -= 1
-		if not isRotatedDown:
-			isRotatedDown = true
-			transform = transform.rotated_local(Vector3.LEFT, 25)
-	if Input.is_action_just_released("ui_down"):
-		transform = transform.rotated_local(Vector3.LEFT, -25)
-		isRotatedDown = false
-	if not Input.is_anything_pressed():
-		rotation = Vector3(0, 0, 0)
+		target_pitch = deg_to_rad(10)
+		#if not isRotatedDown:
+			#isRotatedDown = true
+			#transform = transform.rotated_local(Vector3.LEFT, 25)
+	#if Input.is_action_just_released("ui_down"):
+		#transform = transform.rotated_local(Vector3.LEFT, -25)
+		#isRotatedDown = false
+	else:
+		target_pitch = 0
+	
+	rotation.z = lerp_angle(rotation.z, target_roll, roll_interp_speed * delta)
+	rotation.x = lerp_angle(rotation.x, target_pitch, pitch_interp_speed * delta)
 	
 	if vel != Vector3.ZERO:
 		vel= vel.normalized() * speed

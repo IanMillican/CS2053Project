@@ -1,16 +1,18 @@
-[gd_scene load_steps=50 format=3 uid="uid://clfrjeeup7mqp"]
+[gd_scene load_steps=53 format=3 uid="uid://clfrjeeup7mqp"]
 
 [ext_resource type="PackedScene" uid="uid://bicqibepmprw5" path="res://jetRes/jet.tscn" id="1_7pk40"]
 [ext_resource type="Script" path="res://jetRes/jet_lvl.gd" id="1_bjplq"]
 [ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="3_0m0qx"]
 [ext_resource type="Script" path="res://jetRes/ians.gd" id="3_1ocu7"]
 [ext_resource type="Texture2D" uid="uid://uvj57fcdaknj" path="res://jetRes/camera_lens_casing.jpg" id="3_2l5mm"]
+[ext_resource type="Script" path="res://jetRes/front_camera.gd" id="3_gf2pg"]
 [ext_resource type="PackedScene" uid="uid://bogignha6ra2e" path="res://jetRes/ian_mob.tscn" id="3_j21d8"]
 [ext_resource type="Texture2D" uid="uid://ct884bx3j5nv" path="res://jetRes/metal_plates.png" id="3_jkkgn"]
 [ext_resource type="AudioStream" uid="uid://c6b1dprlbwqu1" path="res://jetRes/The Nightclub.wav" id="4_fvjk7"]
 [ext_resource type="PackedScene" uid="uid://cfliitpkvov0w" path="res://jetRes/projectile.tscn" id="4_viloa"]
 [ext_resource type="Script" path="res://jetRes/big_ian.gd" id="6_u66xp"]
 [ext_resource type="AudioStream" uid="uid://du8o0vk3mkw85" path="res://jetRes/348164__djfroyd__laser-one-shot-1.wav" id="10_8xbyr"]
+[ext_resource type="Texture2D" uid="uid://cdvk6qigmnhx6" path="res://jetRes/pngtree-target-crosshair-icon-simple-style-png-image_1839195.jpg" id="11_8v2yw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sglao"]
 albedo_texture = ExtResource("3_jkkgn")
@@ -129,6 +131,8 @@ size = Vector3(1, 50, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4m8w7"]
 size = Vector3(1, 50, 100)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d51sy"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_276qg"]
 albedo_texture = ExtResource("3_0m0qx")
 
@@ -170,6 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.0368, -174.249)
 [node name="FrontCamera" type="Camera3D" parent="Jet"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.16089, -5.6069)
 current = true
+script = ExtResource("3_gf2pg")
 
 [node name="BackCamera" type="Camera3D" parent="Jet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16089, 6.82294)
@@ -181,6 +186,15 @@ stream = ExtResource("10_8xbyr")
 [node name="GameMusic" type="AudioStreamPlayer3D" parent="Jet"]
 stream = ExtResource("4_fvjk7")
 volume_db = -15.0
+
+[node name="Barrel" type="Node3D" parent="Jet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.292891, 2.74904)
+
+[node name="RayCast3D" type="RayCast3D" parent="Jet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.292891, 2.95996)
+target_position = Vector3(0, 0, 10000)
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="Grounds" type="Node3D" parent="."]
 
@@ -355,16 +369,47 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -35
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 245.0
-offset_bottom = 51.0
-theme_override_font_sizes/font_size = 40
-text = "Current Grade (%): 0%"
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -55.0
+offset_right = 213.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "Current Grade: 0%"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+visible = false
+material = SubResource("CanvasItemMaterial_d51sy")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 180)
+texture = ExtResource("11_8v2yw")
+stretch_mode = 5
 
 [node name="BigIan" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 23.5245, -223.466)
@@ -475,13 +520,23 @@ shape = SubResource("BoxShape3D_u6o1v")
 [connection signal="hitJet" from="Ians/IanMob10" to="." method="_on_ian_mob_hit_jet"]
 [connection signal="body_entered" from="BigIan" to="." method="_on_big_ian_body_entered"]
 [connection signal="body_entered" from="GoalZone" to="." method="_on_goal_zone_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier2" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier2" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier3" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier3" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier4" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier4" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier5" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier5" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier6" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier6" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier7" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier7" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier8" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier8" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier9" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier9" to="." method="_on_barrier_body_entered"]
+[connection signal="area_entered" from="OutOfBounds/Barrier10" to="." method="_on_barrier_area_entered"]
 [connection signal="body_entered" from="OutOfBounds/Barrier10" to="." method="_on_barrier_body_entered"]
