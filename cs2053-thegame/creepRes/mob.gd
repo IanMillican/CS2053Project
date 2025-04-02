@@ -1,6 +1,7 @@
 extends RigidBody2D
 var screenSize
 @export var direction = Vector2.ZERO
+@export var hit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	var player = get_node("/root/Node/player")
+	var player = get_node("/root/main/player")
 	var playerLoc = player.position
 	look_at(playerLoc)
 

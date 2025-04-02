@@ -6,7 +6,7 @@ void vertex() {
 
 uniform float capsule_radius = 108.0;
 uniform float capsule_height = 320.0;
-uniform vec2 capsule_offset = vec2(0.0, -91.0); // adjust if needed
+uniform vec2 capsule_offset = vec2(0.0, -91.0);
 
 void fragment() {
     vec2 tex_size = vec2(textureSize(TEXTURE, 0));
