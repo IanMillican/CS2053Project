@@ -8,6 +8,7 @@ shader = ExtResource("1_3cfs7")
 shader_parameter/capsule_radius = 108.0
 shader_parameter/capsule_height = 320.0
 shader_parameter/capsule_offset = Vector2(0, -91)
+shader_parameter/tint_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s7ooy"]
 animations = [{
