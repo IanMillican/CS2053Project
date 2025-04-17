@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+var lastDirection = Vector2.RIGHT
 const SPEED = 300.0
 
 func _ready() -> void:
@@ -41,6 +41,15 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
+		lastDirection = direction
 	velocity = direction * SPEED
-	
+	var screen_size = get_viewport_rect().size
+
+	if position.x < 0:
+		position.x = screen_size.x
+	elif position.x > screen_size.x:
+		position.x = 0
 	move_and_slide()
+	
+func getLastFacingDirection():
+	return lastDirection
