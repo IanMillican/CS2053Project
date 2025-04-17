@@ -53,3 +53,23 @@ func _physics_process(delta: float) -> void:
 	
 func getLastFacingDirection():
 	return lastDirection
+
+
+func _on_object_body_entered(body: Node2D) -> void:
+	if not body.is_class("CharacterBody2D"):
+		print(body.get_class())
+		return
+	var scoreLabel = get_parent().get_node("Control/Score")
+	get_parent().score += 5
+	var score = get_parent().score
+	scoreLabel.text = "Score %d" % score
+	if position.x > 500:
+		if position.y < 500:
+			get_parent().get_node("Object2").queue_free()
+		else:
+			get_parent().get_node("Object4").queue_free()
+	else:
+		if position.y < 500:
+			get_parent().get_node("Object").queue_free()
+		else:
+			get_parent().get_node("Object3").queue_free()

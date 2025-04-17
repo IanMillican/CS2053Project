@@ -3,7 +3,7 @@ extends Area2D
 @onready var nav_agent = $NavigationAgent2D
 @export var player: Node2D
 @export var speed: float = 100.0
-@export var lookahead_distance: float = 128.0  # 4 tiles * 8 pixels
+@export var lookahead_distance: float = 320.0  
 @export_enum("blinky", "pinky", "inky", "clyde") var ghost_type: String
 @export var scatter_corner: Vector2 = Vector2.ZERO
 
@@ -12,11 +12,11 @@ func _ready():
 		"pinky":
 			speed = 100
 		"blinky":
-			speed = 102
+			speed = 110
 		"inky":
-			speed = 98
+			speed = 90
 		"clyde":
-			speed = 108
+			speed = 118
 	nav_agent.target_position = get_pinky_target()
 
 func _process(delta):
@@ -40,7 +40,7 @@ func get_target():
 		"clyde":
 			return get_clyde_target()
 		_:
-			return player.global_positio
+			return player.global_position
 
 func get_inky_target() -> Vector2:
 	var blinky = get_tree().get_first_node_in_group("blinky") 
