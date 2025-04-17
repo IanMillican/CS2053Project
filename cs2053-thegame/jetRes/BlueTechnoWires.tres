@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c8v3k6ug2j7hc"]
+
+[ext_resource type="Texture2D" uid="uid://bdyxdljyj1r8x" path="res://jetRes/Microscheme.png" id="1_w4jxx"]
+
+[resource]
+albedo_color = Color(0.172248, 0.411099, 1, 1)
+albedo_texture = ExtResource("1_w4jxx")
+metallic_specular = 0.72
+emission = Color(0.172549, 0.411765, 1, 1)
+emission_energy_multiplier = 3.34
+normal_scale = 4.87
+detail_blend_mode = 3
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 1

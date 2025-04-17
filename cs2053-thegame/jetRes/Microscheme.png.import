@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dys3l260bx3oe"
-path.s3tc="res://.godot/imported/FinalBoss.png-e1a6ab376e2b7f48d9506754db1e8382.s3tc.ctex"
+uid="uid://bdyxdljyj1r8x"
+path.s3tc="res://.godot/imported/Microscheme.png-5ed73e82b7406cb260b2351bdfc468f1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://FinalBoss.png"
-dest_files=["res://.godot/imported/FinalBoss.png-e1a6ab376e2b7f48d9506754db1e8382.s3tc.ctex"]
+source_file="res://jetRes/Microscheme.png"
+dest_files=["res://.godot/imported/Microscheme.png-5ed73e82b7406cb260b2351bdfc468f1.s3tc.ctex"]
 
 [params]
 

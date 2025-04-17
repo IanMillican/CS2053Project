@@ -1,26 +1,44 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4qhvgp6tgqgu"]
+[gd_scene load_steps=17 format=3 uid="uid://c4qhvgp6tgqgu"]
 
 [ext_resource type="Script" path="res://jetRes/obstacle.gd" id="1_6ao5y"]
+[ext_resource type="Texture2D" uid="uid://dexpia6t6gob4" path="res://jetRes/lavafull.jpg" id="2_a70y3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2srf4"]
+albedo_texture = ExtResource("2_a70y3")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xf5ka"]
+material = SubResource("StandardMaterial3D_2srf4")
 size = Vector3(6, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p5rbh"]
 size = Vector3(6, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ch26u"]
+albedo_texture = ExtResource("2_a70y3")
+
 [sub_resource type="BoxMesh" id="BoxMesh_3xn81"]
+material = SubResource("StandardMaterial3D_ch26u")
 size = Vector3(6, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3n64"]
 size = Vector3(6, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csto6"]
+albedo_texture = ExtResource("2_a70y3")
+
 [sub_resource type="BoxMesh" id="BoxMesh_g61af"]
+material = SubResource("StandardMaterial3D_csto6")
 size = Vector3(4, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuq6u"]
 size = Vector3(4, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yn7p"]
+albedo_texture = ExtResource("2_a70y3")
+
 [sub_resource type="BoxMesh" id="BoxMesh_1lo4n"]
+material = SubResource("StandardMaterial3D_8yn7p")
 size = Vector3(4, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v4nww"]

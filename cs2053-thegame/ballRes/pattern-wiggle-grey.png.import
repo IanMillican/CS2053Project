@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dys3l260bx3oe"
-path.s3tc="res://.godot/imported/FinalBoss.png-e1a6ab376e2b7f48d9506754db1e8382.s3tc.ctex"
+uid="uid://cv322121mug7w"
+path.s3tc="res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://FinalBoss.png"
-dest_files=["res://.godot/imported/FinalBoss.png-e1a6ab376e2b7f48d9506754db1e8382.s3tc.ctex"]
+source_file="res://ballRes/pattern-wiggle-grey.png"
+dest_files=["res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"]
 
 [params]
 

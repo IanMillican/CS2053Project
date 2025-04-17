@@ -16,7 +16,7 @@ var camera
 func _ready() -> void:
 	#ProjectileScene.set_meta("projectile", true)
 	$Jet/GameMusic.play()
-	DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	raycast = $Jet/RayCast3D
 	camera = $Jet/FrontCamera.get_viewport().get_camera_3d()
 
@@ -87,7 +87,7 @@ func _on_ian_mob_hit_goal(ianName: String) -> void:
 
 func _on_goal_zone_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jet"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://ballRes/BallLvl.tscn")
 
 
 func _on_big_ian_body_entered(body: Node3D) -> void:

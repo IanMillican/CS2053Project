@@ -28,4 +28,11 @@ mesh = SubResource("CapsuleMesh_8wnmi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_p8idd")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.929
+light_indirect_energy = 4.556
+light_volumetric_fog_energy = 5.04
+omni_range = 13.704
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
