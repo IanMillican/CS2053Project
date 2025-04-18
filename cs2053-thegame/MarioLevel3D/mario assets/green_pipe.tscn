@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://df1bimxqmajpy"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7plpd"]
+height = 6.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7ao7u"]
 
@@ -24,6 +25,7 @@ albedo_color = Color(0.172549, 0.690196, 0.101961, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_xspmv"]
 top_radius = 0.4
 bottom_radius = 0.4
+height = 7.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7bye"]
 albedo_color = Color(0.172549, 0.690196, 0.101961, 1)
@@ -35,7 +37,7 @@ mesh = SubResource("CylinderMesh_7plpd")
 material = SubResource("StandardMaterial3D_38cdc")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80027, 0)
 mesh = SubResource("CylinderMesh_8ku5w")
 material = SubResource("StandardMaterial3D_dls85")
 
