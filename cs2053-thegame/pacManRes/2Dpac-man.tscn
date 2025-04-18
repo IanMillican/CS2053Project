@@ -1231,6 +1231,7 @@ script = ExtResource("8_05kia")
 
 [node name="Exit" type="Label" parent="Control"]
 visible = false
+layout_mode = 0
 offset_left = 944.0
 offset_top = 416.0
 offset_right = 1112.0
