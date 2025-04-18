@@ -21,6 +21,7 @@ func _ready() -> void:
 	label.text = lines[currentLine]
 	get_tree().root.content_scale_size = Vector2(1920,1080)
 	DisplayServer.window_set_size(Vector2(1920,1080))
+	$Node2D/CreepContinueButton.pressed.connect(creepButton)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
