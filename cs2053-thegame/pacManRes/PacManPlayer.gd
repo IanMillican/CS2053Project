@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 	if position.x < 0:
 		position.x = screen_size.x
-	elif position.x > screen_size.x:
+	elif position.x > screen_size.x and not get_parent().canExit:
 		position.x = 0
 	move_and_slide()
 	
