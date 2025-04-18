@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2vb0jb4b6ett"]
+
+[ext_resource type="Shader" path="res://pacManRes/PacManGoalObject.gdshader" id="1_ogu5f"]
+[ext_resource type="Texture2D" uid="uid://tj6xx844qmtg" path="res://pacManRes/sprites.png" id="2_2l351"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_271s0"]
+size = Vector2(26, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66yvm"]
+shader = ExtResource("1_ogu5f")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjvbk"]
+atlas = ExtResource("2_2l351")
+region = Rect2(82, 50, 16, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8wh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjvbk")
+}],
+"loop": true,
+"name": &"object",
+"speed": 5.0
+}]
+
+[node name="Object" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_271s0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_66yvm")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_e8wh7")
+animation = &"object"
