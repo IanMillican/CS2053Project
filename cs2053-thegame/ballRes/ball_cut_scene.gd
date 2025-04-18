@@ -27,7 +27,7 @@ func _on_button_pressed() -> void:
 			$Dialogue/Label.text = "I will never give up! This gauntlet is the only thing standing between me and passing the exam!"
 		if dialogue_count == 2:
 			GameScoreControllerJet.grade_score = 0
-			get_tree().change_scene_to_file("res://ballRes/BallLvl.tscn")
+			get_tree().change_scene_to_file("res://finalRes/FinalLvl.tscn")
 	else:
 		if dialogue_count == 1:
 			$IanMobArea/IanCamera.current = false
