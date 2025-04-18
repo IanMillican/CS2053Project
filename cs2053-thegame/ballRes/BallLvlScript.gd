@@ -3,6 +3,8 @@ extends Node3D
 var gradeScore = 0
 
 func _ready() -> void:
+	get_tree().root.content_scale_size = Vector2(1920,1080)
+	DisplayServer.window_set_size(Vector2(1920,1080))
 	$CameraController/SpringCamera/AudioStreamPlayer3D.play()
 	#DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 

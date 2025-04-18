@@ -14,6 +14,8 @@ var raycast
 var camera 
 
 func _ready() -> void:
+	get_tree().root.content_scale_size = Vector2(1920,1080)
+	DisplayServer.window_set_size(Vector2(1920,1080))
 	#ProjectileScene.set_meta("projectile", true)
 	$Jet/GameMusic.play()
 	#DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)

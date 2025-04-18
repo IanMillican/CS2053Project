@@ -3,6 +3,8 @@ extends Node3D
 var dialogue_count = 0
 
 func _ready() -> void:
+	get_tree().root.content_scale_size = Vector2(1920,1080)
+	DisplayServer.window_set_size(Vector2(1920,1080))
 	$Jet.set_physics_process(false)
 	$Jet.set_process(false)
 	$Jet/JetCamera.current = false

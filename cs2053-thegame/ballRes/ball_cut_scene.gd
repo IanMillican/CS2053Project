@@ -3,6 +3,8 @@ extends Node3D
 var dialogue_count = 0
 
 func _ready() -> void:
+	get_tree().root.content_scale_size = Vector2(1920,1080)
+	DisplayServer.window_set_size(Vector2(1920,1080))
 	$PlayerBall.set_physics_process(false)
 	$PlayerBall.set_process(false)
 	$PlayerBall/JetCamera.current = false
@@ -40,7 +42,7 @@ func _on_button_pressed() -> void:
 		if dialogue_count == 3:
 			$Dialogue/Label.text = "You will never pass this class! Face me student!!!"
 		if dialogue_count == 4:
-			get_tree().quit()
+			get_tree().change_scene_to_file("res://finalRes/FinalLvl.tscn")
 
 
 func _on_audio_stream_player_3d_finished() -> void:
