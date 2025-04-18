@@ -67,4 +67,4 @@ func _on_win():
 
 
 func _on_win_screen_confirmed() -> void:
-	get_tree().change_scene_to_file("res://pacManRes/2Dpac-man.tscn")
+	get_tree().change_scene_to_file("res://creepRes/CreepsCutScene.tscn")

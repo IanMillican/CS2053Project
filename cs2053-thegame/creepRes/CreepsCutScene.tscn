@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://ubp18dgyqal4"]
+
+[ext_resource type="Script" path="res://creepRes/creeps_cut_scene.gd" id="1_03g8v"]
+[ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/mob.tscn" id="1_l5qbu"]
+[ext_resource type="PackedScene" uid="uid://vfi5x4625ddb" path="res://creepRes/player.tscn" id="2_e7674"]
+[ext_resource type="Texture2D" uid="uid://tj6xx844qmtg" path="res://pacManRes/sprites.png" id="4_po8hu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvrea"]
+atlas = ExtResource("4_po8hu")
+region = Rect2(17, 0, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjeuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvrea")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_03g8v")
+
+[node name="mob" parent="." instance=ExtResource("1_l5qbu")]
+position = Vector2(1600, 500)
+script = null
+
+[node name="AnimatedSprite2D" parent="mob" index="0"]
+scale = Vector2(1.5, 1.5)
+
+[node name="player" parent="." instance=ExtResource("2_e7674")]
+position = Vector2(300, 500)
+scale = Vector2(6, 6)
+script = null
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(700, 400)
+scale = Vector2(6, 6)
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_right = 79.0
+offset_bottom = 31.0
+text = "Continue"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 832.0
+offset_right = 1864.0
+offset_bottom = 1024.0
+theme_override_font_sizes/font_size = 50
+text = "test"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(400, 500)
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_xjeuf")
+
+[connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
+
+[editable path="mob"]
