@@ -3,7 +3,7 @@ var ProjectileScene = preload("res://jetRes/projectile.tscn")
 var projectile_instance
 var jet_position
 var jet_direction
-var grade_score = 0
+#var grade_score = 0
 
 var fixed_global_rotation: Basis
 
@@ -49,9 +49,9 @@ func _process(delta: float) -> void:
 	else:
 		$Jet/BackCamera.current = false
 		$Jet/FrontCamera.current = true
-	if grade_score < 0:
-		get_tree().reload_current_scene()
-	$UI/Label.text = "Current Grade: %s%%" % grade_score
+	if GameScoreControllerJet.grade_score < 0:
+		get_tree().change_scene_to_file("res://jetRes/JetCutScene.tscn")
+	$UI/Label.text = "Current Grade: %s%%" % GameScoreControllerJet.grade_score
 	#var forward = global_transform.basis.z.normalized()
 	# Move the Area3D in that direction
 	$BigIan.position.z += 20.0 * delta
@@ -75,19 +75,19 @@ func _on_jet_shoot_projectile() -> void:
 
 func _on_ian_mob_hit_jet(ianName: String) -> void:
 	print("Hit Ian")
-	grade_score -= 5
+	GameScoreControllerJet.decreae_score(5)
 	_remove_out_of_bounds(ianName)
 
 
 func _on_ian_mob_hit_goal(ianName: String) -> void:
 	print("Hit goal")
-	grade_score += 10
+	GameScoreControllerJet.increase_score(10)
 	_remove_out_of_bounds(ianName)
 
 
 func _on_goal_zone_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jet"):
-		get_tree().change_scene_to_file("res://ballRes/BallLvl.tscn")
+		get_tree().change_scene_to_file("res://jetRes/JetCutScene.tscn")
 
 
 func _on_big_ian_body_entered(body: Node3D) -> void:
@@ -97,7 +97,7 @@ func _on_big_ian_body_entered(body: Node3D) -> void:
 
 func _on_barrier_body_entered(body: Node3D) -> void:
 	if body.is_in_group("jet"):
-		grade_score -= 5
+		GameScoreControllerJet.decreae_score(5)
 		
 func _remove_out_of_bounds(ianName: String):
 	if ianName == "IanMob1":

@@ -98,11 +98,11 @@ size = Vector3(1, 50, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkolf"]
 size = Vector3(1, 50, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy0ks"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7uo8l"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vianb"]
-material = SubResource("StandardMaterial3D_vy0ks")
+material = SubResource("StandardMaterial3D_7uo8l")
 size = Vector3(1, 50, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4m8w7"]
@@ -124,7 +124,7 @@ size = Vector3(50, 25, 1)
 ambient_light_source = 2
 ambient_light_energy = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23ot8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rggof"]
 transparency = 1
 blend_mode = 1
 albedo_color = Color(0.00392157, 1, 0, 1)
@@ -132,11 +132,11 @@ emission = Color(0, 1, 0, 1)
 emission_energy_multiplier = 12.77
 emission_operator = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_s0j5t"]
-material = SubResource("StandardMaterial3D_23ot8")
+[sub_resource type="BoxMesh" id="BoxMesh_mn0sp"]
+material = SubResource("StandardMaterial3D_rggof")
 size = Vector3(100, 50, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fjpul"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6wasd"]
 size = Vector3(100, 50, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u6o1v"]
@@ -409,10 +409,10 @@ environment = SubResource("Environment_mr3xa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 828.705)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalZone"]
-mesh = SubResource("BoxMesh_s0j5t")
+mesh = SubResource("BoxMesh_mn0sp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalZone"]
-shape = SubResource("BoxShape3D_fjpul")
+shape = SubResource("BoxShape3D_6wasd")
 
 [node name="OutOfBounds" type="Node3D" parent="."]
 

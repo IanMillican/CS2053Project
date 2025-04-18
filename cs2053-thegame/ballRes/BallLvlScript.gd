@@ -4,21 +4,20 @@ var gradeScore = 0
 
 func _ready() -> void:
 	$CameraController/SpringCamera/AudioStreamPlayer3D.play()
-	DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 
 func _process(delta: float) -> void:
 	$OmniLight3D2.position = $PlayerBall.position
 	$OmniLight3D2.position.z -= 2
 	$OmniLight3D2.position.y += 5
 	
-	if gradeScore < 0:
-		get_tree().reload_current_scene()
-	$UI/Label.text = "Current Grade: %s%%" % gradeScore
+	if GameScoreControllerJet.grade_score < 0:
+		get_tree().change_scene_to_file("res://ballRes/BallCutScene.tscn")
+	$UI/Label.text = "Current Grade: %s%%" % GameScoreControllerJet.grade_score
 
 func _on_point_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		gradeScore += 10
-		print("Hit goal")
+		GameScoreControllerJet.increase_score(10)
 
 func _remove_out_of_bounds(name: String):
 	if name == "Ian1":
@@ -44,6 +43,9 @@ func _remove_out_of_bounds(name: String):
 
 
 func _on_ian_hit_ian(name: Variant) -> void:
-	gradeScore -=5
-	print(name)
+	GameScoreControllerJet.decreae_score(5)
 	_remove_out_of_bounds(name)
+	
+func _on_goal_zone_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		get_tree().change_scene_to_file("res://ballRes/BallCutScene.tscn")

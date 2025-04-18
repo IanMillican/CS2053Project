@@ -9,6 +9,8 @@ var isRotatedDown = false
 var target_roll: float = 0.0
 var target_pitch: float = 0.0
 
+@export var grade_score: int
+
 # How quickly the jet rotates towards the target angles.
 var roll_interp_speed: float = 5.0
 var pitch_interp_speed: float = 5.0

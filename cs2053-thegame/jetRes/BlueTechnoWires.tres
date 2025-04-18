@@ -1,10 +1,10 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c8v3k6ug2j7hc"]
 
-[ext_resource type="Texture2D" uid="uid://bdyxdljyj1r8x" path="res://jetRes/Microscheme.png" id="1_w4jxx"]
+[ext_resource type="Texture2D" uid="uid://cv322121mug7w" path="res://ballRes/pattern-wiggle-grey.png" id="1_66b1o"]
 
 [resource]
-albedo_color = Color(0.172248, 0.411099, 1, 1)
-albedo_texture = ExtResource("1_w4jxx")
+albedo_color = Color(0.231118, 0.405937, 0.93891, 1)
+albedo_texture = ExtResource("1_66b1o")
 metallic_specular = 0.72
 emission = Color(0.172549, 0.411765, 1, 1)
 emission_energy_multiplier = 3.34

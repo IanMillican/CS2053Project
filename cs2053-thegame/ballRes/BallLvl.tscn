@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cmtj0filtd6lr"]
+[gd_scene load_steps=63 format=3 uid="uid://cmtj0filtd6lr"]
 
 [ext_resource type="Script" path="res://ballRes/BallLvlScript.gd" id="1_8xrqj"]
 [ext_resource type="PackedScene" uid="uid://dfd3lpec2cqfd" path="res://ballRes/playerball.tscn" id="3_b1n7n"]
@@ -194,6 +194,21 @@ ambient_light_source = 2
 ambient_light_energy = 0.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r7qcl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23ot8"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.00392157, 1, 0, 1)
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 12.77
+emission_operator = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_p4y1a"]
+material = SubResource("StandardMaterial3D_23ot8")
+size = Vector3(100, 50, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5x1ds"]
+size = Vector3(100, 50, 5)
 
 [node name="BallLvl" type="Node3D"]
 script = ExtResource("1_8xrqj")
@@ -706,6 +721,15 @@ pivot_offset = Vector2(180, 180)
 texture = ExtResource("11_8td47")
 stretch_mode = 5
 
+[node name="GoalZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 2682.16)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalZone"]
+mesh = SubResource("BoxMesh_p4y1a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalZone"]
+shape = SubResource("BoxShape3D_5x1ds")
+
 [connection signal="body_entered" from="Ians/Ian1" to="Ians/Ian1" method="_on_body_entered"]
 [connection signal="hitIan" from="Ians/Ian1" to="." method="_on_ian_hit_ian"]
 [connection signal="body_entered" from="Ians/Ian2Wide" to="Ians/Ian2Wide" method="_on_body_entered"]
@@ -736,3 +760,4 @@ stretch_mode = 5
 [connection signal="body_entered" from="PointAreas/PointArea8" to="." method="_on_point_area_body_entered"]
 [connection signal="body_entered" from="PointAreas/PointArea9" to="." method="_on_point_area_body_entered"]
 [connection signal="body_entered" from="PointAreas/PointArea10" to="." method="_on_point_area_body_entered"]
+[connection signal="body_entered" from="GoalZone" to="." method="_on_goal_zone_body_entered"]
