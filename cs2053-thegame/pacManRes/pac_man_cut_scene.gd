@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 func _on_button_pressed() -> void:
 	currentLine += 1
 	if currentLine == 8:
-		get_tree().change_scene_to_file("res://2DMainMenu/mainMenu.tscn")
+		get_tree().change_scene_to_file("res://MarioLevel3D/MarioLevel3D.tscn")
 	else:
 		if leftAlign:
 			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
