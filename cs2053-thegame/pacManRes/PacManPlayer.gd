@@ -10,32 +10,32 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.ZERO
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("ui_up"):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.play()
 		direction.y -= 1
-	if Input.is_action_just_released("up"):
+	if Input.is_action_just_released("ui_up"):
 		$AnimatedSprite2D.animation = "stillUp"
 		$AnimatedSprite2D.play()
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("ui_down"):
 		$AnimatedSprite2D.animation = "down"
 		$AnimatedSprite2D.play()
 		direction.y += 1
-	if Input.is_action_just_released("down"):
+	if Input.is_action_just_released("ui_down"):
 		$AnimatedSprite2D.animation = "stillDown"
 		$AnimatedSprite2D.play()
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("ui_left"):
 		$AnimatedSprite2D.animation = "left"
 		$AnimatedSprite2D.play()
 		direction.x -= 1
-	if Input.is_action_just_released("left"):
+	if Input.is_action_just_released("ui_left"):
 		$AnimatedSprite2D.animation = "stillLeft"
 		$AnimatedSprite2D.play()
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("ui_right"):
 		$AnimatedSprite2D.animation = "right"
 		$AnimatedSprite2D.play()
 		direction.x += 1
-	if Input.is_action_just_released("right"):
+	if Input.is_action_just_released("ui_right"):
 		$AnimatedSprite2D.animation = "stillRight"
 		$AnimatedSprite2D.play()
 	

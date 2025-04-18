@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b86huoo68j8uo"]
+[gd_scene load_steps=6 format=3 uid="uid://b86huoo68j8uo"]
 
 [ext_resource type="Texture2D" uid="uid://5otix2cd403b" path="res://2DMainMenu/GodotImage.png" id="1_c0ims"]
+[ext_resource type="Script" path="res://2DMainMenu/main_menu.gd" id="1_ityka"]
 [ext_resource type="Texture2D" uid="uid://p7au4jtahldq" path="res://2DMainMenu/BlankSpace.png" id="2_0twsn"]
 [ext_resource type="Script" path="res://2DMainMenu/startGamebutton.gd" id="3_3qgli"]
 
@@ -8,6 +9,7 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ityka")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1356.0
