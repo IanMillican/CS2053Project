@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://54ec0hamv51h"]
+
+[ext_resource type="Script" path="res://2DMainMenu/intro_cut_scene.gd" id="1_l2m8u"]
+[ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/mob.tscn" id="1_mr3un"]
+[ext_resource type="Texture2D" uid="uid://b7dhmmoip1dsj" path="res://2DMainMenu/Studnet.png" id="2_admc2"]
+[ext_resource type="PackedScene" uid="uid://vfi5x4625ddb" path="res://creepRes/player.tscn" id="4_mis3m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0cqd"]
+atlas = ExtResource("2_admc2")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4xlu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0cqd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="IntroCutScene" type="Node2D"]
+script = ExtResource("1_l2m8u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -80.0
+offset_top = -130.0
+offset_right = 2070.0
+offset_bottom = 1170.0
+color = Color(0, 0, 0, 1)
+
+[node name="IntroContinueButton" type="Button" parent="."]
+offset_left = 717.0
+offset_top = 318.0
+offset_right = 1272.0
+offset_bottom = 422.0
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 702.0
+offset_right = 1799.0
+offset_bottom = 996.0
+theme_override_font_sizes/font_size = 50
+text = "Test"
+
+[node name="mob" parent="." instance=ExtResource("1_mr3un")]
+position = Vector2(1513, 524)
+script = null
+
+[node name="AnimatedSprite2D" parent="mob" index="0"]
+position = Vector2(57, -67)
+scale = Vector2(1.5, 1.5)
+
+[node name="player" parent="." instance=ExtResource("4_mis3m")]
+visible = false
+position = Vector2(406, 458)
+scale = Vector2(6, 6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(377, 428)
+scale = Vector2(0.354492, 0.417969)
+sprite_frames = SubResource("SpriteFrames_k4xlu")
+
+[connection signal="pressed" from="IntroContinueButton" to="." method="introButton"]
+
+[editable path="mob"]

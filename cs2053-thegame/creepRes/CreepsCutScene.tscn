@@ -20,7 +20,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Main" type="Node2D"]
+[node name="CreepCutSceneMain" type="Node2D"]
 script = ExtResource("1_03g8v")
 
 [node name="mob" parent="." instance=ExtResource("1_l5qbu")]
@@ -41,29 +41,30 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(700, 400)
-scale = Vector2(6, 6)
-
-[node name="Button" type="Button" parent="Node2D"]
-offset_right = 79.0
-offset_bottom = 31.0
-text = "Continue"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 72.0
-offset_top = 832.0
-offset_right = 1864.0
-offset_bottom = 1024.0
-theme_override_font_sizes/font_size = 50
-text = "test"
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(400, 500)
 scale = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_xjeuf")
 
-[connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CreepContinueButton" type="Button" parent="Node2D"]
+offset_left = 536.0
+offset_top = 344.0
+offset_right = 1368.0
+offset_bottom = 592.0
+theme_override_font_sizes/font_size = 50
+text = "Creep Cut Scene Button"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 768.0
+offset_right = 1856.0
+offset_bottom = 1024.0
+theme_override_font_sizes/font_size = 50
+text = "Test"
+
+[connection signal="pressed" from="Node2D/CreepContinueButton" to="." method="creepButton"]
 
 [editable path="mob"]

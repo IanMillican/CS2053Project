@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://creepRes/level1Creeps.tscn")
+	get_tree().change_scene_to_file("res://2DMainMenu/intro_cut_scene.tscn")

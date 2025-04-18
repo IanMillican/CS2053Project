@@ -1,6 +1,6 @@
 extends Node2D
 
-var label
+var label: Label
 var currentLine = 0
 var leftAlign = false
 
@@ -24,11 +24,15 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func creepButton() -> void:
-	print("button was pressed")
+func _process(delta: float) -> void:
+	pass
+
+
+func introButton() -> void:
+	print("button Pressed")
 	currentLine += 1
 	if currentLine == 8:
-		get_tree().change_scene_to_file("res://pacManRes/2Dpac-man.tscn")
+		get_tree().change_scene_to_file("res://creepRes/level1Creeps.tscn")
 	else:
 		if leftAlign:
 			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -37,5 +41,5 @@ func creepButton() -> void:
 		leftAlign = !leftAlign
 		label.text = lines[currentLine]
 	if currentLine == 4:
-		$player.visible = false
-		$AnimatedSprite2D.visible = true
+		$player.visible = true
+		$AnimatedSprite2D.visible = false
