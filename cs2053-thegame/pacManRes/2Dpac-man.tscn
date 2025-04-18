@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://c8oe0ul3lurpq"]
+[gd_scene load_steps=20 format=4 uid="uid://c8oe0ul3lurpq"]
 
 [ext_resource type="Script" path="res://pacManRes/2dPacMan.gd" id="1_1b34o"]
 [ext_resource type="Texture2D" uid="uid://coorxmwgsgicg" path="res://pacManRes/Tileset.png" id="1_rpgbk"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://pacManRes/time_remaining.gd" id="7_3g05f"]
 [ext_resource type="Script" path="res://pacManRes/lose_screen.gd" id="8_05kia"]
 [ext_resource type="PackedScene" uid="uid://b2vb0jb4b6ett" path="res://pacManRes/PacManGoalObject.tscn" id="9_rro1y"]
-[ext_resource type="Script" path="res://pacManRes/Apple.gd" id="10_dguss"]
 [ext_resource type="PackedScene" uid="uid://4ci3pb53nbf3" path="res://pacManRes/pellet.tscn" id="11_knpwo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bfye"]
@@ -1128,7 +1127,6 @@ tile_set = SubResource("TileSet_dfrna")
 position = Vector2(476, 614)
 script = ExtResource("4_2y7hx")
 player = NodePath("../player")
-ghost_type = "pinky"
 
 [node name="AnimatedSprite2D" parent="Pinky" index="0"]
 material = SubResource("ShaderMaterial_3tr4s")
@@ -1195,7 +1193,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LoseTimer" type="Timer" parent="Control"]
-wait_time = 60.0
+wait_time = 45.0
 one_shot = true
 autostart = true
 
@@ -1231,29 +1229,36 @@ dialog_text = "Did you even play Pac-Man as a kid??
 Jeez do better"
 script = ExtResource("8_05kia")
 
+[node name="Exit" type="Label" parent="Control"]
+visible = false
+offset_left = 944.0
+offset_top = 416.0
+offset_right = 1112.0
+offset_bottom = 495.0
+theme_override_colors/font_color = Color(0, 0.858824, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Exit Here
+----------->"
+
 [node name="Object" parent="." instance=ExtResource("9_rro1y")]
 z_index = -1
 position = Vector2(56, 56)
 scale = Vector2(2.5, 2.5)
-script = ExtResource("10_dguss")
 
 [node name="Object2" parent="." instance=ExtResource("9_rro1y")]
 z_index = -1
 position = Vector2(1056, 64)
 scale = Vector2(2.5, 2.5)
-script = ExtResource("10_dguss")
 
 [node name="Object3" parent="." instance=ExtResource("9_rro1y")]
 z_index = -1
 position = Vector2(56, 1184)
 scale = Vector2(2.5, 2.5)
-script = ExtResource("10_dguss")
 
 [node name="Object4" parent="." instance=ExtResource("9_rro1y")]
 z_index = -1
 position = Vector2(1056, 1184)
 scale = Vector2(2.5, 2.5)
-script = ExtResource("10_dguss")
 
 [node name="pellets" type="Node2D" parent="."]
 z_index = -1
@@ -1288,8 +1293,42 @@ position = Vector2(248, 352)
 [node name="Area2D10" parent="pellets" instance=ExtResource("11_knpwo")]
 position = Vector2(504, 64)
 
+[node name="Area2D11" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(968, 344)
+
+[node name="Area2D12" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(320, 936)
+
+[node name="Area2D13" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(168, 584)
+
+[node name="Area2D14" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(384, 1184)
+
+[node name="Area2D15" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(248, 1056)
+
+[node name="Area2D16" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(1048, 824)
+
+[node name="Area2D17" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(64, 928)
+
+[node name="Area2D18" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(616, 936)
+
+[node name="Area2D19" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(248, 64)
+
+[node name="Area2D20" parent="pellets" instance=ExtResource("11_knpwo")]
+position = Vector2(56, 232)
+
 [connection signal="finished" from="IntroMusic" to="." method="_on_intro_music_finished"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_intro_music_finished"]
+[connection signal="body_entered" from="Pinky" to="." method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Blinky" to="." method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Inky" to="." method="_on_enemy_body_entered"]
+[connection signal="body_entered" from="Clyde" to="." method="_on_enemy_body_entered"]
 [connection signal="timeout" from="Control/LoseTimer" to="." method="_on_lose_timer_timeout"]
 [connection signal="confirmed" from="Control/LoseScreen" to="." method="_on_lose_screen_confirmed"]
 [connection signal="body_entered" from="Object" to="player" method="_on_object_body_entered"]

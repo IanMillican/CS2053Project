@@ -1,5 +1,6 @@
 extends Node2D
 @export var score = 0
+var canExit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,8 +17,10 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if score >= 30:
-		get_tree().reload_current_scene()
-		#get_tree().change_scene_to_file("")
+		$Control/Exit.visible = true
+		canExit = true
+	if canExit and $player.position.x > 1120:
+		get_tree().change_scene_to_file("res://pacManRes/Pac-ManCutScene.tscn")
 
 
 func _on_lose_timer_timeout() -> void:
@@ -30,3 +33,10 @@ func _on_lose_screen_confirmed() -> void:
 
 func _on_intro_music_finished() -> void:
 	$AudioStreamPlayer2D.play()
+
+
+func _on_enemy_body_entered(body: Node2D) -> void:
+	if body.name != "player":
+		return
+	$Control/LoseScreen.visible = true
+	get_tree().paused = true
