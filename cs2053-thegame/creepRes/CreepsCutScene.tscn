@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ubp18dgyqal4"]
+[gd_scene load_steps=7 format=3 uid="uid://1oil7ors5s2a"]
 
 [ext_resource type="Script" path="res://creepRes/creeps_cut_scene.gd" id="1_03g8v"]
 [ext_resource type="PackedScene" uid="uid://dwn8fnxhiqn30" path="res://creepRes/mob.tscn" id="1_l5qbu"]
@@ -55,7 +55,7 @@ offset_top = 344.0
 offset_right = 1368.0
 offset_bottom = 592.0
 theme_override_font_sizes/font_size = 50
-text = "Creep Cut Scene Button"
+text = "Continue"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 72.0
