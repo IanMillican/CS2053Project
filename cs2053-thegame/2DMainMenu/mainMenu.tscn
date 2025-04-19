@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b86huoo68j8uo"]
+[gd_scene load_steps=6 format=3 uid="uid://b86huoo68j8uo"]
 
 [ext_resource type="Texture2D" uid="uid://5otix2cd403b" path="res://2DMainMenu/GodotImage.png" id="1_c0ims"]
+[ext_resource type="Script" path="res://2DMainMenu/main_menu.gd" id="1_ityka"]
 [ext_resource type="Texture2D" uid="uid://p7au4jtahldq" path="res://2DMainMenu/BlankSpace.png" id="2_0twsn"]
 [ext_resource type="Script" path="res://2DMainMenu/startGamebutton.gd" id="3_3qgli"]
 
@@ -8,6 +9,7 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ityka")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1356.0
@@ -27,15 +29,20 @@ offset_bottom = 644.0
 texture = ExtResource("2_0twsn")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 1461.0
-offset_top = 231.0
-offset_right = 1925.0
-offset_bottom = 321.0
-theme_override_colors/font_color = Color(0.937255, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.937255, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.937255, 0, 0, 1)
+offset_left = 1349.0
+offset_top = 169.0
+offset_right = 1882.0
+offset_bottom = 682.0
+theme_override_colors/font_color = Color(0.352477, 0.750823, 0.940515, 1)
+theme_override_colors/font_shadow_color = Color(0.352941, 0.74902, 0.941176, 1)
+theme_override_colors/font_outline_color = Color(0.352941, 0.74902, 0.941176, 1)
 theme_override_font_sizes/font_size = 60
-text = "Main Menu"
+text = "CS2053 The Game!
+
+Created By: 
+Ian Millican
+Jonathan Eddie
+Logan Lavigne"
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 7
@@ -43,9 +50,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -544.0
+offset_left = -962.0
 offset_top = -500.0
-offset_right = 545.0
+offset_right = 252.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 200

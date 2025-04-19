@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://buwqpdmeoj0t3"]
+
+[ext_resource type="PackedScene" uid="uid://t6smcgkoes3n" path="res://pacManRes/ghost.tscn" id="1_1be47"]
+[ext_resource type="Script" path="res://pacManRes/pac_man_cut_scene.gd" id="1_d2qoj"]
+[ext_resource type="PackedScene" uid="uid://2gn1nic0h4ur" path="res://pacManRes/player.tscn" id="3_xr6qy"]
+[ext_resource type="Texture2D" uid="uid://c83l0wlxhxqln" path="res://pacManRes/Screenshot 2025-04-18 at 12.58.58 PM.png" id="4_011rr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4uq4"]
+atlas = ExtResource("4_011rr")
+region = Rect2(0, 0, 272, 356)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lx72y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4uq4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_d2qoj")
+
+[node name="Prof" parent="." instance=ExtResource("1_1be47")]
+position = Vector2(1560, 496)
+scale = Vector2(8, 8)
+
+[node name="player" parent="." instance=ExtResource("3_xr6qy")]
+position = Vector2(351, 388)
+rotation = 1.5708
+scale = Vector2(30, 30)
+script = null
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1925.0
+offset_bottom = 1076.0
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-602, -525)
+
+[node name="Button" type="Button" parent="Node2D"]
+z_index = 1
+offset_left = 1432.0
+offset_top = 760.0
+offset_right = 1704.0
+offset_bottom = 944.0
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 92.0
+offset_top = 753.0
+offset_right = 1859.0
+offset_bottom = 985.0
+theme_override_font_sizes/font_size = 50
+text = "Where'd the other three of you go???"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(383, 411)
+scale = Vector2(1.39965, 1.27607)
+sprite_frames = SubResource("SpriteFrames_lx72y")
+
+[connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
+
+[editable path="Prof"]

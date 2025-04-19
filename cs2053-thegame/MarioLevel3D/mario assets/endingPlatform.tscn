@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfwf24b887co2"]
+
+[ext_resource type="Texture2D" uid="uid://vv1ga143qy6q" path="res://MarioLevel3D/mario assets/TheCastle.png" id="1_b6k66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca2bw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sv8fd"]
+size = Vector3(12, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vah03"]
+albedo_texture = ExtResource("1_b6k66")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5mqr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="endingPlatform" type="Node3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986972, 3.50103, 0.00617218)
+size = Vector3(2, 2, 1)
+material = SubResource("StandardMaterial3D_ca2bw")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.30586, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_sv8fd")
+material = SubResource("StandardMaterial3D_vah03")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0986972, -0.804831, 0.00617218)
+operation = 2
+size = Vector3(2, 2, 1.3)
+material = SubResource("StandardMaterial3D_k5mqr")

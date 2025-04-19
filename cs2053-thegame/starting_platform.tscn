@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3haqjug7xois"]
+
+[ext_resource type="Material" uid="uid://begut8ig0kcyg" path="res://MarioLevel3D/mario assets/BrickMaterial.tres" id="1_wnj6q"]
+
+[node name="startingPlatform" type="CSGBox3D"]
+
+[node name="brick" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46883, 0)
+size = Vector3(10, 8, 1)
+material = ExtResource("1_wnj6q")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+operation = 2
+size = Vector3(5, 7, 2)
+material = ExtResource("1_wnj6q")

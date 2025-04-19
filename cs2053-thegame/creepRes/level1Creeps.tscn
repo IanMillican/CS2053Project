@@ -11,7 +11,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Node" type="Node"]
+[node name="main" type="Node"]
 script = ExtResource("1_76vj0")
 mobScene = ExtResource("2_7kasv")
 projectileScene = ExtResource("3_xlm3l")
@@ -19,9 +19,6 @@ projectileScene = ExtResource("3_xlm3l")
 [node name="player" parent="." instance=ExtResource("2_wrmho")]
 
 [node name="mobTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="scoreTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="startTimer" type="Timer" parent="."]
@@ -53,8 +50,22 @@ ok_button_text = "Try Again"
 dialog_text = "Maybe try not to get hit
 next time."
 
-[connection signal="hit" from="player" to="." method="_on_player_hit"]
+[node name="ScoreLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 264.0
+offset_bottom = 128.0
+text = "Score: 0"
+
+[node name="WinScreen" type="AcceptDialog" parent="Control"]
+process_mode = 3
+position = Vector2i(910, 490)
+size = Vector2i(114, 100)
+ok_button_text = "Next Level"
+dialog_text = "Great job!"
+
 [connection signal="timeout" from="mobTimer" to="." method="_on_mob_timer_timeout"]
-[connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="canceled" from="Control/LoseScreen" to="." method="_on_lose_screen_canceled"]
 [connection signal="confirmed" from="Control/LoseScreen" to="." method="_on_lose_screen_confirmed"]
+[connection signal="confirmed" from="Control/WinScreen" to="." method="_on_win_screen_confirmed"]
