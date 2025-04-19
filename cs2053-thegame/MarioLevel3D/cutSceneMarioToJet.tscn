@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://di22b0jpljfgl"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_eld4x"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="2_o1b25"]
+[ext_resource type="Texture2D" uid="uid://c32seoqgc05xq" path="res://FinalBossFrame2.png" id="3_7tocw"]
+[ext_resource type="Texture2D" uid="uid://cmpjudbx3c064" path="res://MarioLevel3D/mario assets/playerSprite2D.png" id="4_ctyd1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eg3k3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o1b25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7tocw")
+}],
+"loop": true,
+"name": &"profAnimation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jsqfn"]
+radius = 88.0
+height = 216.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2ieu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ctyd1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmor6"]
+radius = 132.015
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_eld4x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="prof" type="Area2D" parent="CanvasLayer2"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer2/prof"]
+position = Vector2(1507, 330)
+scale = Vector2(0.706, 0.7)
+sprite_frames = SubResource("SpriteFrames_eg3k3")
+animation = &"profAnimation"
+frame_progress = 0.874505
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/prof"]
+visible = false
+position = Vector2(1000, 230)
+shape = SubResource("CapsuleShape2D_jsqfn")
+
+[node name="player" type="CharacterBody2D" parent="CanvasLayer2"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer2/player"]
+position = Vector2(354, 316)
+scale = Vector2(1.8, 1.826)
+sprite_frames = SubResource("SpriteFrames_h2ieu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/player"]
+visible = false
+position = Vector2(231.5, 259)
+shape = SubResource("CircleShape2D_gmor6")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Label" type="Label" parent="CanvasLayer3"]
+offset_left = 44.0
+offset_top = 634.0
+offset_right = 1867.0
+offset_bottom = 887.0
+theme_override_font_sizes/font_size = 50
+text = "...."
+
+[node name="Control" type="Control" parent="CanvasLayer3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 544.0
+offset_right = 1203.0
+offset_bottom = 805.0
+
+[node name="Button" type="Button" parent="CanvasLayer3/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 784.0
+offset_top = 371.0
+offset_right = 1147.0
+offset_bottom = 463.0
+theme_override_font_sizes/font_size = 50
+text = "CONTINUE"
+flat = true
+
+[connection signal="pressed" from="CanvasLayer3/Control/Button" to="." method="_on_button_pressed"]

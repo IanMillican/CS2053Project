@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://t6smcgkoes3n"]
+
+[ext_resource type="Shader" path="res://pacManRes/prof.gdshader" id="1_3cfs7"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="2_qfye3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1h32"]
+shader = ExtResource("1_3cfs7")
+shader_parameter/capsule_radius = 108.0
+shader_parameter/capsule_height = 320.0
+shader_parameter/capsule_offset = Vector2(0, -91)
+shader_parameter/tint_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7ooy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qfye3")
+}],
+"loop": true,
+"name": &"prof",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dg52e"]
+radius = 54.0
+height = 160.0
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_v1h32")
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_s7ooy")
+animation = &"prof"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("CapsuleShape2D_dg52e")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://df1bimxqmajpy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7plpd"]
+height = 6.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7ao7u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38cdc"]
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(0.172549, 0.690196, 0.101961, 1)
+albedo_texture = SubResource("CanvasTexture_7ao7u")
+refraction_scale = 0.22
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8ku5w"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dls85"]
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(0.172549, 0.690196, 0.101961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xspmv"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 7.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7bye"]
+albedo_color = Color(0.172549, 0.690196, 0.101961, 1)
+
+[node name="GreenPipe" type="CSGMesh3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+use_collision = true
+mesh = SubResource("CylinderMesh_7plpd")
+material = SubResource("StandardMaterial3D_38cdc")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80027, 0)
+mesh = SubResource("CylinderMesh_8ku5w")
+material = SubResource("StandardMaterial3D_dls85")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+operation = 2
+mesh = SubResource("CylinderMesh_xspmv")
+material = SubResource("StandardMaterial3D_a7bye")

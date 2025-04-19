@@ -7,6 +7,8 @@ var screenSize
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var main = get_node("/root/main")
+	connect("hit",Callable(main, "_on_player_hit"))
 	screenSize = get_viewport_rect().size
 
 

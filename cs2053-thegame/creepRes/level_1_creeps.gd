@@ -1,7 +1,7 @@
 extends Node
 @export var mobScene: PackedScene
 @export var projectileScene: PackedScene
-var score
+@export var score = 0
 var delay = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -13,11 +13,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
-		if delay % 2 == 0:
+		if delay % 20 == 0:
 			var projectile = projectileScene.instantiate()
 			projectile.position =$player.position
 			projectile.dir = $player.velocity.normalized()
-			
+			projectile.speed = $player.speed + 100
 			add_child(projectile)
 	delay += 1
 
@@ -46,9 +46,6 @@ func newGame() -> void:
 	$player.start($startPos.position)
 	$startTimer.start()
 
-func _on_score_timer_timeout() -> void:
-	score += 1
-
 func _on_start_timer_timeout() -> void:
 	$mobTimer.start()
 	$scoreTimer.start()
@@ -61,6 +58,14 @@ func _on_lose_screen_canceled() -> void:
 	get_tree().change_scene_to_file("res://2DMainMenu/mainMenu.tscn")
 
 func _on_lose_screen_confirmed() -> void:
-	print("test")
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	
+func _on_win():
+	$Control/WinScreen.visible = true
+	get_tree().paused = true
+
+
+func _on_win_screen_confirmed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://creepRes/CreepsCutScene.tscn")
