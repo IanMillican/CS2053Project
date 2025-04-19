@@ -1,3 +1,181 @@
-[gd_scene format=3 uid="uid://gh6mhokxdfah"]
+[gd_scene load_steps=11 format=3 uid="uid://gh6mhokxdfah"]
 
-[node name="FinalLvl" type="Node3D"]
+[ext_resource type="Texture2D" uid="uid://cbk104gdnrmqq" path="res://finalRes/spriteFinalLevelcs2053.png" id="1_1hp64"]
+[ext_resource type="Script" path="res://finalRes/final_lvl_Script.gd" id="1_e6lhj"]
+[ext_resource type="Texture2D" uid="uid://6nf5d1db30it" path="res://finalRes/FinalBossCROPPED.png" id="2_gwp17"]
+[ext_resource type="Texture2D" uid="uid://yckcn2jm3pqk" path="res://finalRes/DVMT-6OXcAE2rZY.jpg.afab972f972bd7fbd4253bc7aa1cf27f.jpg" id="3_m5mfr"]
+
+[sub_resource type="Gradient" id="Gradient_citm1"]
+offsets = PackedFloat32Array(0, 0.546512, 1)
+colors = PackedColorArray(0.498039, 0.32549, 0, 1, 0.866282, 0.672386, 0, 1, 0.497399, 0.32745, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w57sj"]
+gradient = SubResource("Gradient_citm1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j855p"]
+texture = SubResource("GradientTexture2D_w57sj")
+
+[sub_resource type="Gradient" id="Gradient_3c1wg"]
+offsets = PackedFloat32Array(0, 0.527132, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.577008, 0.577008, 0.577008, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u83j8"]
+gradient = SubResource("Gradient_3c1wg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ifyoj"]
+texture = SubResource("GradientTexture2D_u83j8")
+
+[node name="FinalLvl" type="Node2D"]
+script = ExtResource("1_e6lhj")
+
+[node name="UI" type="Control" parent="."]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerAttackBar" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -222.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_j855p")
+
+[node name="Attack1" type="Button" parent="UI/PlayerAttackBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.138
+anchor_top = 0.14
+anchor_right = 0.138
+anchor_bottom = 0.14
+offset_left = 0.039978
+offset_top = -0.0799999
+offset_right = 329.04
+offset_bottom = 143.92
+theme_override_font_sizes/font_size = 30
+text = "Attack 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Attack2" type="Button" parent="UI/PlayerAttackBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41925
+anchor_top = 0.149009
+anchor_right = 0.41925
+anchor_bottom = 0.149009
+offset_left = 0.039978
+offset_top = -0.0799999
+offset_right = 329.04
+offset_bottom = 143.92
+theme_override_font_sizes/font_size = 30
+text = "Attack 2"
+metadata/_edit_use_anchors_ = true
+
+[node name="Attack3" type="Button" parent="UI/PlayerAttackBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.697375
+anchor_top = 0.149009
+anchor_right = 0.697375
+anchor_bottom = 0.149009
+offset_left = 0.039978
+offset_top = -0.0799999
+offset_right = 329.04
+offset_bottom = 143.92
+theme_override_font_sizes/font_size = 30
+text = "Attack 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="IanHealth" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.119
+anchor_right = 0.002
+anchor_bottom = 0.119
+offset_left = 0.16
+offset_top = -0.520004
+offset_right = 701.16
+offset_bottom = 177.48
+theme_override_styles/panel = SubResource("StyleBoxTexture_ifyoj")
+
+[node name="Health" type="Label" parent="UI/IanHealth"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 29.0
+offset_right = 613.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 40
+text = "HP: 50/50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IanHealth2" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.998
+anchor_top = 0.58
+anchor_right = 0.998
+anchor_bottom = 0.58
+offset_left = -701.16
+offset_top = -0.400024
+offset_right = -0.160034
+offset_bottom = 177.6
+theme_override_styles/panel = SubResource("StyleBoxTexture_ifyoj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="UI/IanHealth2"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 29.0
+offset_right = 613.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 40
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1097.0
+offset_top = 361.0
+offset_right = 1424.0
+offset_bottom = 438.0
+theme_override_colors/font_color = Color(0.223529, 0.121569, 1, 1)
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(410, 632)
+scale = Vector2(0.478887, 0.478887)
+texture = ExtResource("1_1hp64")
+
+[node name="Ian" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1466, 349)
+rotation = -0.00405028
+scale = Vector2(0.586614, 0.586614)
+texture = ExtResource("2_gwp17")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1010, 533)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("3_m5mfr")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="UI/PlayerAttackBar/Attack1" to="." method="_on_attack_1_pressed"]
