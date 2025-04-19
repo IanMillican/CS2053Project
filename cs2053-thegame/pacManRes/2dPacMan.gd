@@ -10,7 +10,13 @@ func _ready() -> void:
 	$Blinky/AnimatedSprite2D.material.set_shader_parameter("tint_color", Color(1.0, 0.0, 0.0)) # red
 	$Inky/AnimatedSprite2D.material.set_shader_parameter("tint_color", Color(0.0, 1.0, 1.0)) # cyan
 	$Clyde/AnimatedSprite2D.material.set_shader_parameter("tint_color", Color(1.0, 0.65, 0.0)) # orange
-	DisplayServer.window_set_position(Vector2i(0, 0))
+	var screen = DisplayServer.window_get_current_screen()
+	var screen_position = DisplayServer.screen_get_position(screen)
+	var screen_size = DisplayServer.screen_get_size(screen)
+	var window_size = DisplayServer.window_get_size()
+	var x = screen_position.x + (screen_size.x - window_size.x) / 2
+	var y = screen_position.y
+	DisplayServer.window_set_position(Vector2i(x, y))
 	get_tree().paused = false
 	$IntroMusic.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.

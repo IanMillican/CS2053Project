@@ -12,8 +12,8 @@ var lines = [
 	"You changed the location of your mario sprite in your directory.",
 	"I see...Well why am I a cartoon again?",
 	"With the frizz, no way!!",
-	"What are you even talking about..."
-	,"Are you a jets fan?"
+	"What are you even talking about...",
+	"Are you a jets fan?"
 	
 ]
 

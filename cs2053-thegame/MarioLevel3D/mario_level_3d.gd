@@ -170,7 +170,7 @@ func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_inde
 	if body is CharacterBody3D:
 			print("WIN");
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_tree().change_scene_to_file("res://jetRes/JetLvl.tscn")
+			get_tree().change_scene_to_file("res://MarioLevel3D/cutSceneMarioToJet.tscn")
 
 
 func _on_out_of_bounds_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
