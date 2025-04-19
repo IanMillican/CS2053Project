@@ -4,56 +4,102 @@ var turn = "student"
 
 var start_position = Vector2(540, 614)  # Starting point
 var end_position = Vector2(1097, 361)    # Ending point
-var move_time = 0.85                     # Time it takes to move (in seconds)
+var move_time = 1                     # Time it takes to move (in seconds)
 var elapsed_time = 0.0
-var attack_duration = 5
+var attack_duration = 3.5
+
+var ianHealth = 100
+var playerHealth = 100
+
+var ianLines = ["No technology (except calculator)", "I'll make some light versions of the slides", "Ughh why won't my eduroam work"]
+var ianLinePos = 0
 
 @onready var timer = $AttackTimer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$UI/Attack.position = start_position
-	#timer.connect("timeout", self, "_on_attack_finished")
-	
-	# Ensure the timer is stopped initially
 	timer.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$UI/Attack.position = start_position
-	if timer.is_stopped():
-		return  # Only update if the timer is running
-	
-	if elapsed_time < move_time:
-		# Calculate the interpolation factor (between 0 and 1)
-		var t = elapsed_time / move_time
-		# Move the label using linear interpolation (lerp) between start and end positions
-		$UI/Attack.position = start_position.lerp(end_position, t)
-		elapsed_time += delta  # Increment elapsed time
-	else:
-		$UI/Attack.position = end_position
-		$UI/Attack.text = ""
+	$UI/IanHealth/Health.text = "HP: %s/100" % ianHealth
+	$UI/PlayerHealth/Health.text = "HP: %s/100" % playerHealth
+	if ianHealth <= 0:
+		get_tree().change_scene_to_file("res://finalRes/FinalCutScene.tscn")
 
 
 func _on_attack_1_pressed() -> void:
 	if turn == "student":
-		$UI/Attack.text = "Dominos Discount"  # Change the text for the attack label
-		$UI/Attack.position = start_position  # Reset the position at the start
-		elapsed_time = 0.0  # Reset elapsed time
-		timer.start(attack_duration)  # Start the timer for the attack duration
+		$UI/Attack.text = "Dominos Discount"
+		$UI/Attack.position = start_position
+		$UI/PlayerAttackBar/Attack1.disabled = true
+		$UI/PlayerAttackBar/Attack2.disabled = true
+		$UI/PlayerAttackBar/Attack3.disabled = true
+		move_label()
 
-		# Start the animation, wait for the attack to finish, and then handle the next turn
-		#turn = "enemy"  # Switch to enemy's turn (or do whatever is necessary)
-		# Here you can also apply damage to the enemy if needed
-		print("Attack initiated!")  # You can add logic here for enemy damage
-func _on_attack_finished() -> void:
+func _on_attack_2_pressed() -> void:
+	if turn == "student":
+		$UI/Attack.text = "Lab exam from home"
+		$UI/Attack.position = start_position
+		$UI/PlayerAttackBar/Attack1.disabled = true
+		$UI/PlayerAttackBar/Attack2.disabled = true
+		$UI/PlayerAttackBar/Attack3.disabled = true
+		move_label()
+	
+
+func _on_attack_3_pressed() -> void:
+	if turn == "student":
+		$UI/Attack.text = "The old S-Club"
+		$UI/Attack.position = start_position
+		$UI/PlayerAttackBar/Attack1.disabled = true
+		$UI/PlayerAttackBar/Attack2.disabled = true
+		$UI/PlayerAttackBar/Attack3.disabled = true
+		move_label()
+
+func move_label() -> void:
+	var timer = get_tree().create_timer(move_time)
+	var attack_timer = get_tree().create_timer(attack_duration) 
+	while timer.time_left != 0:
+		$UI/Attack.position = end_position.lerp(start_position, (timer.time_left / move_time))
+		await get_tree().create_timer(0.0).timeout
+
+	
+	if $UI/Attack.text == "The old S-Club":
+		ianHealth -= 20
+	elif $UI/Attack.text == "Lab exam from home":
+		ianHealth -= 15
+	else:
+		ianHealth -= 10
+	$UI/Attack.text = "" 
+	await attack_timer.timeout 
+	turn = "enemy"  
 	print("Attack finished!")
-	# This is where you would handle things after the attack, such as:
-	# - Ending the attack animation
-	# - Switching turns (next turn)
-	# - Checking if the enemy is defeated, etc.
-	turn = "student"  # Set the turn back to the student
-	# Resume the scene or do other actions to continue the game
-	$UI/Attack.text = ""  # Clear the attack label text
-		
+	ian_attack()
+	
+func ian_attack() -> void:
+	if ianLinePos >= ianLines.size():
+		ianLinePos = 0
+		$UI/Attack.text = ianLines[ianLinePos]
+	else:
+		$UI/Attack.text = ianLines[ianLinePos]
+		ianLinePos += 1
+	var timer = get_tree().create_timer(move_time)
+	var attack_timer = get_tree().create_timer(attack_duration) 
+	while timer.time_left != 0: 
+		$UI/Attack.position = start_position.lerp(end_position, (timer.time_left / move_time))
+		await get_tree().create_timer(0.0).timeout 
+
+	
+	$UI/Attack.text = ""
+	playerHealth -= 10
+	await attack_timer.timeout 
+	turn = "student" 
+	print("Attack finished!")
+	$UI/PlayerAttackBar/Attack1.disabled = false
+	$UI/PlayerAttackBar/Attack2.disabled = false
+	$UI/PlayerAttackBar/Attack3.disabled = false
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	$AudioStreamPlayer2D.play()

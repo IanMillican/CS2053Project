@@ -1,29 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://gh6mhokxdfah"]
+[gd_scene load_steps=12 format=3 uid="uid://gh6mhokxdfah"]
 
 [ext_resource type="Texture2D" uid="uid://cbk104gdnrmqq" path="res://finalRes/spriteFinalLevelcs2053.png" id="1_1hp64"]
 [ext_resource type="Script" path="res://finalRes/final_lvl_Script.gd" id="1_e6lhj"]
 [ext_resource type="Texture2D" uid="uid://6nf5d1db30it" path="res://finalRes/FinalBossCROPPED.png" id="2_gwp17"]
 [ext_resource type="Texture2D" uid="uid://yckcn2jm3pqk" path="res://finalRes/DVMT-6OXcAE2rZY.jpg.afab972f972bd7fbd4253bc7aa1cf27f.jpg" id="3_m5mfr"]
+[ext_resource type="AudioStream" uid="uid://kmryxks14xur" path="res://finalRes/Sketchbook 2024-12-05.ogg" id="5_385op"]
 
 [sub_resource type="Gradient" id="Gradient_citm1"]
 offsets = PackedFloat32Array(0, 0.546512, 1)
 colors = PackedColorArray(0.498039, 0.32549, 0, 1, 0.866282, 0.672386, 0, 1, 0.497399, 0.32745, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w57sj"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_67iol"]
 gradient = SubResource("Gradient_citm1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j855p"]
-texture = SubResource("GradientTexture2D_w57sj")
+texture = SubResource("GradientTexture2D_67iol")
 
 [sub_resource type="Gradient" id="Gradient_3c1wg"]
 offsets = PackedFloat32Array(0, 0.527132, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.577008, 0.577008, 0.577008, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u83j8"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ax3o4"]
 gradient = SubResource("Gradient_3c1wg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ifyoj"]
-texture = SubResource("GradientTexture2D_u83j8")
+texture = SubResource("GradientTexture2D_ax3o4")
 
 [node name="FinalLvl" type="Node2D"]
 script = ExtResource("1_e6lhj")
@@ -46,9 +47,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -960.0
-offset_top = -222.0
-offset_right = 960.0
+offset_left = -961.0
+offset_top = -221.0
+offset_right = 959.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_j855p")
@@ -65,7 +67,7 @@ offset_top = -0.0799999
 offset_right = 329.04
 offset_bottom = 143.92
 theme_override_font_sizes/font_size = 30
-text = "Attack 1"
+text = "Attack 1 (10 DMG)"
 metadata/_edit_use_anchors_ = true
 
 [node name="Attack2" type="Button" parent="UI/PlayerAttackBar"]
@@ -80,7 +82,7 @@ offset_top = -0.0799999
 offset_right = 329.04
 offset_bottom = 143.92
 theme_override_font_sizes/font_size = 30
-text = "Attack 2"
+text = "Attack 2 (15 DMG)"
 metadata/_edit_use_anchors_ = true
 
 [node name="Attack3" type="Button" parent="UI/PlayerAttackBar"]
@@ -95,7 +97,7 @@ offset_top = -0.0799999
 offset_right = 329.04
 offset_bottom = 143.92
 theme_override_font_sizes/font_size = 30
-text = "Attack 3"
+text = "Attack 3 (20 DMG)"
 metadata/_edit_use_anchors_ = true
 
 [node name="IanHealth" type="Panel" parent="UI"]
@@ -111,18 +113,31 @@ offset_right = 701.16
 offset_bottom = 177.48
 theme_override_styles/panel = SubResource("StyleBoxTexture_ifyoj")
 
+[node name="IanTitle" type="Label" parent="UI/IanHealth"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 614.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Ian"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Health" type="Label" parent="UI/IanHealth"]
 layout_mode = 0
-offset_left = 95.0
-offset_top = 29.0
-offset_right = 613.0
-offset_bottom = 143.0
+offset_left = 98.0
+offset_top = 66.0
+offset_right = 616.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "HP: 50/50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IanHealth2" type="Panel" parent="UI"]
+[node name="PlayerHealth" type="Panel" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.998
@@ -136,12 +151,25 @@ offset_bottom = 177.6
 theme_override_styles/panel = SubResource("StyleBoxTexture_ifyoj")
 metadata/_edit_use_anchors_ = true
 
-[node name="Health" type="Label" parent="UI/IanHealth2"]
+[node name="PlayerTitle" type="Label" parent="UI/PlayerHealth"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = -3.0
+offset_right = 614.0
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Student"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="UI/PlayerHealth"]
 layout_mode = 0
 offset_left = 95.0
-offset_top = 29.0
+offset_top = 61.0
 offset_right = 613.0
-offset_bottom = 143.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "HP: 100/100"
 horizontal_alignment = 1
@@ -166,7 +194,7 @@ texture = ExtResource("1_1hp64")
 
 [node name="Ian" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1466, 349)
+position = Vector2(1444, 355)
 rotation = -0.00405028
 scale = Vector2(0.586614, 0.586614)
 texture = ExtResource("2_gwp17")
@@ -178,4 +206,14 @@ texture = ExtResource("3_m5mfr")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1032, 532)
+stream = ExtResource("5_385op")
+volume_db = -10.0
+autoplay = true
+
 [connection signal="pressed" from="UI/PlayerAttackBar/Attack1" to="." method="_on_attack_1_pressed"]
+[connection signal="pressed" from="UI/PlayerAttackBar/Attack2" to="." method="_on_attack_2_pressed"]
+[connection signal="pressed" from="UI/PlayerAttackBar/Attack3" to="." method="_on_attack_3_pressed"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://cswbshyslf215"]
+
+[ext_resource type="Texture2D" uid="uid://cbk104gdnrmqq" path="res://finalRes/spriteFinalLevelcs2053.png" id="1_7i0et"]
+[ext_resource type="Script" path="res://finalRes/final_cut_scene.gd" id="1_yqhcg"]
+[ext_resource type="Texture2D" uid="uid://6nf5d1db30it" path="res://finalRes/FinalBossCROPPED.png" id="2_tulbo"]
+[ext_resource type="Texture2D" uid="uid://yckcn2jm3pqk" path="res://finalRes/DVMT-6OXcAE2rZY.jpg.afab972f972bd7fbd4253bc7aa1cf27f.jpg" id="3_howcg"]
+
+[sub_resource type="Gradient" id="Gradient_jyipr"]
+offsets = PackedFloat32Array(0, 0.546512, 1)
+colors = PackedColorArray(0.498039, 0.32549, 0, 1, 0.866282, 0.672386, 0, 1, 0.497399, 0.32745, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uutd4"]
+gradient = SubResource("Gradient_jyipr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kflts"]
+texture = SubResource("GradientTexture2D_uutd4")
+
+[node name="FinalCutScene" type="Node2D"]
+script = ExtResource("1_yqhcg")
+
+[node name="Player" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(410, 632)
+scale = Vector2(0.478887, 0.478887)
+texture = ExtResource("1_7i0et")
+
+[node name="Ian" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1444, 355)
+rotation = -0.00405028
+scale = Vector2(0.586614, 0.586614)
+texture = ExtResource("2_tulbo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1010, 533)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("3_howcg")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerAttackBar" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -222.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_kflts")
+
+[node name="PlayerText" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 260.0
+offset_right = 660.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IanText" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1201.0
+offset_top = 85.0
+offset_right = 1683.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 654.0
+offset_top = 862.0
+offset_right = 1259.0
+offset_bottom = 1066.0
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
