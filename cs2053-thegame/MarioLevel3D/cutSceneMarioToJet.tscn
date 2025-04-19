@@ -45,32 +45,34 @@ layer = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(0.0923971, 0.0923971, 0.0923971, 1)
-offset_right = 1207.0
-offset_bottom = 793.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="prof" type="Area2D" parent="CanvasLayer2"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer2/prof"]
-position = Vector2(997, 288)
-scale = Vector2(0.568898, 0.564103)
+position = Vector2(1507, 330)
+scale = Vector2(0.706, 0.7)
 sprite_frames = SubResource("SpriteFrames_eg3k3")
 animation = &"profAnimation"
 frame_progress = 0.874505
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/prof"]
+visible = false
 position = Vector2(1000, 230)
 shape = SubResource("CapsuleShape2D_jsqfn")
 
 [node name="player" type="CharacterBody2D" parent="CanvasLayer2"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer2/player"]
-position = Vector2(223.5, 261)
-scale = Vector2(1.44737, 1.46789)
+position = Vector2(354, 316)
+scale = Vector2(1.8, 1.826)
 sprite_frames = SubResource("SpriteFrames_h2ieu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer2/player"]
+visible = false
 position = Vector2(231.5, 259)
 shape = SubResource("CircleShape2D_gmor6")
 
@@ -78,27 +80,29 @@ shape = SubResource("CircleShape2D_gmor6")
 layer = 2
 
 [node name="Label" type="Label" parent="CanvasLayer3"]
-offset_left = 93.0
-offset_top = 536.0
-offset_right = 1130.0
-offset_bottom = 789.0
+offset_left = 44.0
+offset_top = 634.0
+offset_right = 1867.0
+offset_bottom = 887.0
+theme_override_font_sizes/font_size = 50
 text = "...."
 
 [node name="Control" type="Control" parent="CanvasLayer3"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
-offset_top = 536.0
+offset_top = 544.0
 offset_right = 1203.0
-offset_bottom = 797.0
+offset_bottom = 805.0
 
 [node name="Button" type="Button" parent="CanvasLayer3/Control"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 949.0
-offset_top = 168.0
-offset_right = 1193.0
-offset_bottom = 260.0
+offset_left = 784.0
+offset_top = 371.0
+offset_right = 1147.0
+offset_bottom = 463.0
+theme_override_font_sizes/font_size = 50
 text = "CONTINUE"
 flat = true
 

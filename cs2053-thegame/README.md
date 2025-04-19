@@ -1,7 +1,7 @@
 # CS2053-TheGame
 This game was created by Ian Millican, Jonathan Eddie and Logan Lavigne. It involves 6 levels (1 to 5 and a final boss) and has cut scenes between each.
 ## Cut Scenes
-All cut scenes are static with dialogue boxes that are the characters interacting with eachother. We used buttons labeled "Next" or "Continue" to go through the dialogue. When the dialogue is done, clicking the button will take you to the next level.
+All cut scenes are static with dialogue boxes that are the characters interacting with eachother. We used buttons labeled "Next" or "Continue" to go through the dialogue. When the dialogue is done, clicking the button will take you to the next level. Cut scenes to the next level were created by the person who made the current level.
 ## Main Menu
 The main menu is very basic but it is where we start. It has the Godot logo and the creators names. The start game button when clicked will take you to level 1. 
 This menu was created by Ian Millican.
@@ -15,11 +15,13 @@ This level was created by Ian Millcan
 This level is a 3D Mario level. You can control your character using the "wasd" keys, and control the direction your character faces using the mouse.  You have to jump from pipe to pipe in order, or the level resets. You can't skip a pipe, you must hit all of them. When at the bottom, the center black door way has a hole you can't see but you have to walk over it and fall in (reference to hidden levels in original mario games). If you walk off the edge at the bottom that is also a lose condition and the level will reset. Note when falling on a pipe a collision has to occur, sometimes simply falling on it won't trigger it, try to walk on the pipe a little before going to the next.
 This level was created by Jonathan Eddie
 ## Level 4 - Jet
-Add Level Info after merging Branches
+This level is similar to labs 4 and 5. We have obstacles we need to fly through in order to pass but some are now moving. In addition to that it is required that you shoot a barrier in each obstacle before pasing through it, this is done with the space bar. Controlling the plane, that is ascending and descending and rolling left to right, is done with the arrow keys. The goal is to simply make it to the end of the tunnel.
 This level was created by Logan Lavigne
 ## Level 5 - Ball
 Add Level Info after merging Branches
 This level was created by Logan Lavigne
 ## Level 6 - Final Boss
 Add Level Info after merging Branches
-This level was created by 
+This level was created by Logan Lavigne
+## Git Work
+We used Git and GitHub to manage the different components of the game. Once everyone finished their components Ian went through and merged everything. This involved handling merge conflicts and ensuring smooth transitions between levels and things such as project settings didn't get messed up during the merge.
