@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfliitpkvov0w"]
+
+[ext_resource type="Script" path="res://jetRes/projectile.gd" id="1_yr8j2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpd4x"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.917647, 0, 0, 1)
+emission_energy_multiplier = 8.26
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8wnmi"]
+material = SubResource("StandardMaterial3D_mpd4x")
+radius = 0.075
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p8idd"]
+radius = 0.05
+height = 0.5
+
+[node name="Projectile" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_yr8j2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000841618, 0.00355136, -0.000612497)
+mesh = SubResource("CapsuleMesh_8wnmi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_p8idd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.929
+light_indirect_energy = 4.556
+light_volumetric_fog_energy = 5.04
+omni_range = 13.704
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

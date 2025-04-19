@@ -15,10 +15,18 @@ run/main_scene="res://2DMainMenu/mainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameScoreControllerJet="*res://jetRes/GameScoreController_JET.gd"
+
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
+
+[dotnet]
+
+project/assembly_name="CS2053-TheGame"
 
 [filesystem]
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfd3lpec2cqfd"]
+
+[ext_resource type="Script" path="res://ballRes/PlayerBallController.gd" id="1_a7rgf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvewr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hc4no"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mdtx5"]
+noise = SubResource("FastNoiseLite_hc4no")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njsqn"]
+albedo_color = Color(0.133333, 0.627451, 1, 1)
+albedo_texture = SubResource("NoiseTexture2D_mdtx5")
+metallic = 0.41
+
+[sub_resource type="SphereMesh" id="SphereMesh_2cu3t"]
+material = SubResource("StandardMaterial3D_njsqn")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gkh7m"]
+radius = 1.5
+
+[node name="PlayerBall" type="RigidBody3D"]
+mass = 1.5
+physics_material_override = SubResource("PhysicsMaterial_nvewr")
+contact_monitor = true
+max_contacts_reported = 100
+script = ExtResource("1_a7rgf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_2cu3t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_gkh7m")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73597, 0)
+visible = false
+light_energy = 10.0
+light_size = 0.394
+omni_range = 125.0

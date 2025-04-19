@@ -1,0 +1,238 @@
+[gd_scene load_steps=25 format=3 uid="uid://bum3eeaxcx6kk"]
+
+[ext_resource type="PackedScene" uid="uid://dfd3lpec2cqfd" path="res://ballRes/playerball.tscn" id="1_snlbh"]
+[ext_resource type="Script" path="res://ballRes/ball_cut_scene.gd" id="1_t5cj6"]
+[ext_resource type="Texture2D" uid="uid://dys3l260bx3oe" path="res://FinalBoss.png" id="2_onfd8"]
+[ext_resource type="AudioStream" uid="uid://do3h6276p8fdy" path="res://jetRes/Ludum Dare 30 04.ogg" id="4_xxyra"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3od6"]
+albedo_texture = ExtResource("2_onfd8")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iy5st"]
+material = SubResource("StandardMaterial3D_g3od6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_itd5r"]
+size = Vector3(2, 0.290112, 1.25865)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ino3"]
+load_path = "res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgy56"]
+albedo_color = Color(0.870588, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_8ino3")
+metallic_specular = 0.72
+emission = Color(0.172549, 0.411765, 1, 1)
+emission_energy_multiplier = 3.34
+normal_scale = 4.87
+detail_blend_mode = 3
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_k4g4e"]
+material = SubResource("StandardMaterial3D_rgy56")
+size = Vector3(100, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_50uln"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u1xjb"]
+load_path = "res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uss0g"]
+albedo_color = Color(0.870588, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_u1xjb")
+metallic_specular = 0.72
+emission = Color(0.172549, 0.411765, 1, 1)
+emission_energy_multiplier = 3.34
+normal_scale = 4.87
+detail_blend_mode = 3
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_e8hlt"]
+lightmap_size_hint = Vector2i(2509, 3007)
+material = SubResource("StandardMaterial3D_uss0g")
+uv2_padding = 2.09
+size = Vector3(1, 50, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xun2m"]
+size = Vector3(1, 50, 500)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8pd7p"]
+load_path = "res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi018"]
+albedo_color = Color(0.870588, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_8pd7p")
+metallic_specular = 0.72
+emission = Color(0.172549, 0.411765, 1, 1)
+emission_energy_multiplier = 3.34
+normal_scale = 4.87
+detail_blend_mode = 3
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_cma1y"]
+lightmap_size_hint = Vector2i(2509, 3007)
+material = SubResource("StandardMaterial3D_pi018")
+uv2_padding = 2.09
+size = Vector3(1, 50, 500)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3sl6v"]
+load_path = "res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d2py"]
+albedo_color = Color(0.870588, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_3sl6v")
+metallic_specular = 0.72
+emission = Color(0.172549, 0.411765, 1, 1)
+emission_energy_multiplier = 3.34
+normal_scale = 4.87
+detail_blend_mode = 3
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrjjs"]
+lightmap_size_hint = Vector2i(2509, 3007)
+material = SubResource("StandardMaterial3D_0d2py")
+uv2_padding = 2.09
+size = Vector3(1, 50, 500)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f12e0"]
+load_path = "res://.godot/imported/pattern-wiggle-grey.png-9c0804e933f9901f4f69a2db64dc7de9.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqlo0"]
+albedo_color = Color(0.870588, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_f12e0")
+metallic_specular = 0.72
+emission = Color(0.172549, 0.411765, 1, 1)
+emission_energy_multiplier = 3.34
+normal_scale = 4.87
+detail_blend_mode = 3
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_30crj"]
+lightmap_size_hint = Vector2i(2509, 3007)
+material = SubResource("StandardMaterial3D_kqlo0")
+uv2_padding = 2.09
+size = Vector3(1, 50, 500)
+
+[node name="BallCutScene" type="Node3D"]
+script = ExtResource("1_t5cj6")
+
+[node name="PlayerBall" parent="." instance=ExtResource("1_snlbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.4974)
+
+[node name="JetCamera" type="Camera3D" parent="PlayerBall"]
+transform = Transform3D(0.945359, 0, -0.32603, 0, 1, 0, 0.32603, 0, 0.945359, -2.24832, 1.12222, 5.44825)
+
+[node name="IanMobArea" type="Area3D" parent="."]
+transform = Transform3D(-2, -1.74846e-07, 7.64274e-15, 0, -8.74228e-08, -2, 1.74846e-07, -2, 8.74228e-08, 0, 0.327036, 18.3309)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IanMobArea"]
+mesh = SubResource("PlaneMesh_iy5st")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IanMobArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0950562, -0.084816)
+shape = SubResource("BoxShape3D_itd5r")
+
+[node name="IanCamera" type="Camera3D" parent="IanMobArea"]
+transform = Transform3D(0.477026, 5.71747e-21, 0.14982, -0.14982, -2.18557e-08, 0.477026, 6.54885e-09, -0.5, -2.08515e-08, 0.792969, 3.06561, -0.470558)
+
+[node name="Dialogue" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -333.0
+offset_top = -91.0
+offset_right = 333.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -341.0
+offset_top = -169.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Continue"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50.667, 0)
+
+[node name="Ground1" type="StaticBody3D" parent="." groups=["ground"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -4.17869, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground1"]
+mesh = SubResource("BoxMesh_k4g4e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground1"]
+shape = SubResource("BoxShape3D_50uln")
+
+[node name="Wall1" type="StaticBody3D" parent="." groups=["walls"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6091, 2.96581, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
+mesh = SubResource("BoxMesh_e8hlt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
+shape = SubResource("BoxShape3D_xun2m")
+
+[node name="Wall2" type="StaticBody3D" parent="." groups=["walls"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2669, 2.96581, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+mesh = SubResource("BoxMesh_cma1y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+shape = SubResource("BoxShape3D_xun2m")
+
+[node name="Wall3" type="StaticBody3D" parent="." groups=["walls"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2669, 2.96581, 41.6625)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+mesh = SubResource("BoxMesh_xrjjs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+shape = SubResource("BoxShape3D_xun2m")
+
+[node name="Wall4" type="StaticBody3D" parent="." groups=["walls"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.2669, 2.96581, -36.6007)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+mesh = SubResource("BoxMesh_30crj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+shape = SubResource("BoxShape3D_xun2m")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AudioListener3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87135, 0)
+stream = ExtResource("4_xxyra")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="Dialogue/Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="AudioListener3D/AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
